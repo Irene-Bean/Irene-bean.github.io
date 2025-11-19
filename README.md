@@ -198,7 +198,7 @@ a:active {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <h3 class="text-2xl font-bold text-dark-blue mb-2">1. Acknowledge Unpaid Labor</h3>
-                    <p class="text-base text-gray-700">Recognize that student demands are "institutional memory" and free climate assessment. *Action: Stop "waiting students out" and engage with existing demands immediately.</p>
+                    <p class="text-base text-gray-700"> Recognize that student activism functions as unpaid institutional labor. Engage with and amplify student voices. </p>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <h3 class="text-2xl font-bold text-dark-blue mb-2">2. Provide Proactive Training</h3>
