@@ -117,7 +117,7 @@ a:active {
 
         <section id="paradox" class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-4 text-medium-blue">The "Middle Management Shield"</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Student support professionals are trapped in a no-win scenario. Political pressure from leadership, combined with a lack of transparency, forces identity center staff to become the "shield" that absorbs student anger.</p>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Student support professionals are trapped in a no-win scenario. Political pressure from leadership, combined with a lack of transparency, forces identity center staff to become the "shield" that absorbs student disapproval and disengagement.</p>
             
             <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
                 <h3 class="text-2xl font-bold text-dark-blue mb-8 text-center">The Flow of Blame</h3>
@@ -149,7 +149,7 @@ a:active {
                     
                     <div class="p-4 bg-white border-2 border-red rounded-lg shadow-sm text-center max-w-md">
                         <span class="font-bold text-red">STUDENTS</span>
-                        <span class="block text-sm text-gray-700">Experience loss of service; anger is misdirected at staff.</span>
+                        <span class="block text-sm text-gray-700">Experience loss of service; disapproval is misdirected at staff.</span>
                     </div>
                 </div>
             </div>
