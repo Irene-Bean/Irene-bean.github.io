@@ -177,7 +177,7 @@ a:active {
                     </h3>
                     <p class="text-base text-gray-700">
                         <strong class="text-green">Focus:</strong> Survival & Autonomy.<br>
-                        <strong class="text-green">Goal:</strong> Bypass the "corporatized" model. Build support networks with non-profits, alumni, and community groups to meet basic needs (food, funding) outside of institutional control.
+                        <strong class="text-green">Goal:</strong> Bypass the "corporatized" campus model. Build coalitions and partnerships with non-profits, alumni, and community groups to meet basic needs (food, funding).
                     </p>
                 </div>
             </div>
