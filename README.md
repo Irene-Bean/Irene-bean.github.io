@@ -1,19 +1,19 @@
 <title>Irene Mutwiri, M.Ed. | Cover Letter Pitch re: ezCatering</title> <script src="https://cdn.tailwindcss.com"></script> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <style> body { font-family: 'Roboto', sans-serif; background-color: #F0F4F8; color: #1E293B; } .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; } @media (min-width: 768px) { .chart-container { height: 350px; } } .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); padding: 1.5rem; transition: transform 0.2s; } .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); } .step-circle { width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; margin-bottom: 0.5rem; } </style>
 <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <div>
-            <h1 class="text-3xl font-black tracking-tight text-gray-900">
-                <span class="text-blue-600">Irene Mutwiri, M.Ed.</span> | ezCatering Cover Letter
-            </h1>
-            <p class="mt-1 text-sm text-gray-500 font-medium tracking-wide uppercase">Candidate Experience Associate</p>
-        </div>
-        <div class="flex items-center">
+     <div class="flex items-center">
             <button id="pdf-download-button" onclick="generatePdf()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
                     <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.44-3.44a.75.75 0 1 1 1.06 1.06l-4.75 4.75a.75.75 0 0 1-1.06 0l-4.75-4.75a.75.75 0 1 1 1.06-1.06l3.44 3.44V3a.75.75 0 0 1 .75-.75ZM7.5 18a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Z" clip-rule="evenodd" />
                 </svg>                      
                 Download as PDF
             </button>
+        </div>
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div>
+            <h1 class="text-3xl font-black tracking-tight text-gray-900">
+                <span class="text-blue-600">Irene Mutwiri, M.Ed.</span> | ezCatering Cover Letter
+            </h1>
+            <p class="mt-1 text-sm text-gray-500 font-medium tracking-wide uppercase">Candidate Experience Associate</p>
         </div>
         <div class="hidden md:block">
             <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">Metrics Driven</span>
