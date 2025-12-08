@@ -1,66 +1,231 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activism & Burnout: A Support Strategy</title>
+    <title>Irene Mutwiri, M.Ed. | Cover Letter Pitch re: ezCatering</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9;
-        }
+        body { font-family: 'Roboto', sans-serif; background-color: #F0F4F8; color: #1E293B; }
         .chart-container {
             position: relative;
             width: 100%;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            height: 350px;
+            height: 300px;
             max-height: 400px;
         }
-        @media (max-width: 768px) {
-            .chart-container {
-                height: 300px;
-                max-height: 350px;
-            }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
         }
-        .text-dark-blue { color: #073B4C; }
-        .text-medium-blue { color: #118AB2; }
-        .text-green { color: #06D6A0; }
-        .text-yellow { color: #FFD166; }
-        .text-red { color: #FF6B6B; }
-        .bg-dark-blue { background-color: #073B4C; }
-        .bg-medium-blue { background-color: #118AB2; }
-        .bg-green { background-color: #06D6A0; }
-        .bg-yellow { background-color: #FFD166; }
-        .bg-red { background-color: #FF6B6B; }
-        .border-dark-blue { border-color: #073B4C; }
-        .border-medium-blue { border-color: #118AB2; }
-        .border-red { border-color: #FF6B6B; }
-        .icon-unicode {
-            font-size: 3rem;
-            line-height: 1;
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            transition: transform 0.2s;
         }
-        .arrow-down {
-            width: 0; 
-            height: 0; 
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid #118AB2;
-            margin: 0 auto;
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .step-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
-<body class="text-dark-blue">
+<body class="bg-slate-50">
 
-    <header class="bg-dark-blue text-white shadow-md py-8">
-        <h1 class="text-center text-3xl md:text-5xl font-bold">Wade in the Water | A Support Strategy for Identity-based Student Activism</h1>
-        <p class="text-center text-lg md:text-xl text-gray-300 mt-2"> This is a Free Resource for Identity Center Practitioners, designed by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a></p>
-        <style>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-black tracking-tight text-gray-900">
+                    <span class="text-blue-600">Irene Mutwiri, M.Ed.</span> | ezCatering Cover Letter
+                </h1>
+                <p class="mt-1 text-sm text-gray-500 font-medium tracking-wide uppercase">Candidate Experience Associate</p>
+            </div>
+            <div class="flex items-center">
+                <button id="pdf-download-button" onclick="generatePdf()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
+                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.44-3.44a.75.75 0 1 1 1.06 1.06l-4.75 4.75a.75.75 0 0 1-1.06 0l-4.75-4.75a.75.75 0 1 1 1.06-1.06l3.44 3.44V3a.75.75 0 0 1 .75-.75ZM7.5 18a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Z" clip-rule="evenodd" />
+                    </svg>                      
+                    Download as PDF
+                </button>
+                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold ml-4 hidden md:inline">Metrics Driven</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">Metrics Driven</span>
+                <span class="px-3 py-1 rounded-full bg-cyan-100 text-cyan-800 text-xs font-bold ml-2">Process Focused</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+
+        <!-- Introduction Section -->
+        <section class="mb-12">
+            <div class="card bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
+                <h2 class="text-2xl font-bold mb-4">Beyond Coordination</h2>
+                <p class="text-lg leading-relaxed opacity-90">
+                     Candidate experience is not just about scheduling; it is about strategic orchestration. We can refine best practices to streamline processes that drive employer branding. This infographic visualizes how improving the candidate experience can provide business value.
+                </p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Section 1: Interview Sentiment (Data-Grounded) -->
+            <section class="col-span-1">
+                <div class="card h-full">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-indigo-600 pl-3">Interview Sentiment Distribution</h3>
+                    <p class="text-gray-600 mb-6">
+                        Actual candidate feedback from the latest reviews reveals the high bar for experience management. This distribution shows the precise breakdown of sentiment, providing a clear starting point for targeted optimization.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <p class="text-3xl font-bold text-green-600">53%</p>
+                        <p class="text-sm text-gray-500">Positive Experience</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Application Channels (Data-Grounded) -->
+            <section class="col-span-1">
+                <div class="card h-full">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-yellow-500 pl-3">Application Channel Breakdown</h3>
+                    <p class="text-gray-600 mb-6">
+                        Understanding how candidates enter the pipeline is crucial for recruiter efficiency and scaling referral programs. This data dictates resource allocation for sourcing vs. coordinating.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="channelsChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <p class="text-3xl font-bold text-yellow-600">81%</p>
+                        <p class="text-sm text-gray-500">Applied Online</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Qualitative Themes -->
+            <section class="col-span-1 md:col-span-2">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-indigo-600 pl-3">Key Takeaways from Candidate Feedback</h3>
+                    <ul class="space-y-3 pt-4">
+                        <!-- Strength: Interviewer Quality -->
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2 text-xl">&#10003;</span>
+                            <div>
+                                <p class="font-medium text-gray-900">Interviewer Quality & Support</p>
+                                <p class="text-sm text-gray-600">Candidates highlight interviewers and recruiters as professional, kind, genuine, and supportive, often describing the overall experience as "top-notch" or "fun."</p>
+                            </div>
+                        </li>
+                        <!-- Strength: Transparency & Prep -->
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2 text-xl">&#10003;</span>
+                            <div>
+                                <p class="font-medium text-gray-900">High Transparency & Preparation</p>
+                                <p class="text-sm text-gray-600">The hiring process is praised for transparency, clear communication, and providing helpful preparation materials (questions, videos) in advance.</p>
+                            </div>
+                        </li>
+                        <!-- Challenge: Internal Consistency -->
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 text-xl">&#10007;</span>
+                            <div>
+                                <p class="font-medium text-gray-900">Internal Alignment & Consistency</p>
+                                <p class="text-sm text-gray-600">There's opportunity to improve internal alignment and consistency across teams.</p>
+                            </div>
+                        </li>
+                        <!-- Observation: Time to Hire -->
+                        <li class="flex items-start">
+                            <span class="text-yellow-500 mr-2 text-xl">&#9888;</span>
+                            <div>
+                                <p class="font-medium text-gray-900">Variable Time-to-Productivity</p>
+                                <p class="text-sm text-gray-600">The average hiring time is approximately 17.76 days, but speed is inconsistent, ranging from one day for some roles up to 49 days for others. There's opportunity to streamline workflows here.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section: Recommendation Callout (cNPS) -->
+            <section class="col-span-1 md:col-span-2">
+                <div class="card bg-blue-50 border-l-4 border-blue-600 p-6">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 mr-3">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12Z" />
+                        </svg>
+                        Recommendation
+                    </h3>
+                    <p class="text-lg text-blue-700 leading-relaxed">
+                        To formally measure the success of operational improvements and drive a data-driven experience, I recommend tracking a **Candidate Net Promoter Score (cNPS)**. This metric transforms qualitative feedback into a quantifiable, singular score that ties directly to talent acquisition performance and employer brand health.
+                    </p>
+                    <p class="mt-2 text-sm text-blue-600 font-semibold">
+                        Success Metric: cNPS (Promoters - Detractors)
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- Section 4: The Optimization Cycle (Diagram) -->
+            <section class="col-span-1 md:col-span-2">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-gray-800 pl-3">Iterative Improvement</h3>
+                    <p class="text-gray-600 mb-8">
+                        This model demonstrates how we proactively suggest improvements and refine best practices based on data.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center relative">
+                        <!-- Connecting Line (Desktop) -->
+                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
+
+                        <!-- Step 1 -->
+                        <div class="flex flex-col items-center bg-white p-4">
+                            <div class="step-circle bg-blue-600 text-xl shadow-lg">1</div>
+                            <h4 class="font-bold text-lg mt-2 text-blue-800">Assess</h4>
+                            <p class="text-sm text-gray-500 mt-1">Analyze current workflows & metrics</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex flex-col items-center bg-white p-4">
+                            <div class="step-circle bg-cyan-500 text-xl shadow-lg">2</div>
+                            <h4 class="font-bold text-lg mt-2 text-cyan-800">Suggest</h4>
+                            <p class="text-sm text-gray-500 mt-1">Propose proactive improvements</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col items-center bg-white p-4">
+                            <div class="step-circle bg-orange-500 text-xl shadow-lg">3</div>
+                            <h4 class="font-bold text-lg mt-2 text-orange-800">Enhance</h4>
+                            <p class="text-sm text-gray-500 mt-1">Refine best practices & execute</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-col items-center bg-white p-4">
+                            <div class="step-circle bg-gray-800 text-xl shadow-lg">4</div>
+                            <h4 class="font-bold text-lg mt-2 text-gray-800">Report</h4>
+                            <p class="text-sm text-gray-500 mt-1">Validate effectiveness with data</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        
+        <footer class="mt-12 text-center text-gray-400 text-sm">
+            <p>Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for ezCatering. (Last Updated December 08, 2025)</p>
+             <style>
 a:link {
-  color: yellow;
+  color: blue;
   background-color: transparent;
   text-decoration: none;
 }
@@ -80,359 +245,107 @@ a:active {
   text-decoration: underline;
 }
 </style>
-    </header>
-
-    <main class="container mx-auto p-4 md:p-8">
-
-        <section id="crisis" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-4 text-medium-blue">The 2025 Crisis: The "Why Now"</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Thanks to anti-DEI political sentiment and federal aid shortages, burnout is affecting identity centers hard.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
-                    <span class="icon-unicode text-red">&#128178;</span>
-                    <h3 class="text-2xl font-bold text-dark-blue mt-2 mb-2">The 2025 Shutdown</h3>
-                    <p class="text-base text-gray-700">The immediate loss of basic needs funding like SNAP and WIC means student burnout is now synonymous with *resource scarcity and hunger*. Students cannot engage if they cannot count on their next meal.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
-                    <span class="icon-unicode text-red">&#128220;</span>
-                    <h3 class="text-2xl font-bold text-dark-blue mt-2 mb-2">The "Compact for Excellence"</h3>
-                    <p class="text-base text-gray-700">The current political climate ties federal funding to anti-DEI concessions, paralyzing institutions and forcing identity center staff into the impossible position of enforcing *covert erasure* of DEI programs.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="problem" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-4 text-medium-blue">The Double Burden of Burnout</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto mb-8">The source data reveals burnout is not a personal failing but a structural problem driven by two distinct economic factors: unpaid labor and basic survival.</p>
-            
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-2xl font-bold text-dark-blue mb-2 text-center">Primary Drivers of Student Burnout</h3>
-                <p class="text-base text-gray-700 text-center mb-4">This conceptual model shows the composition of activist burnout. While identity-based burdens are constant, the primary drivers are economic, stemming from both the institution and external crises.</p>
-                <div class="chart-container">
-                    <canvas id="burnoutDriversChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="paradox" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-4 text-medium-blue">The "Middle Management Shield"</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Student support professionals are trapped in a no-win scenario. Political pressure from leadership, combined with a lack of transparency, forces identity center staff to become the "shield" that absorbs student disapproval and disengagement.</p>
-            
-            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h3 class="text-2xl font-bold text-dark-blue mb-8 text-center">The Flow of Blame</h3>
-                <div class="flex flex-col items-center space-y-4">
-                    
-                    <div class="p-4 bg-red text-white rounded-lg shadow-md text-center max-w-md">
-                        <span class="font-bold text-lg">EXTERNAL POLITICAL PRESSURE</span>
-                        <span class="block text-sm">(e.g., "Compact for Academic Excellence")</span>
-                    </div>
-
-                    <div class="w-1 h-12 bg-medium-blue"></div>
-                    <div class="arrow-down -mt-4"></div>
-
-                    <div class="p-4 bg-yellow text-dark-blue rounded-lg shadow-md text-center max-w-md">
-                        <span class="font-bold text-lg">INSTITUTIONAL LEADERSHIP</span>
-                        <span class="block text-sm">Issues "Covert Erasure" & Gag Orders</span>
-                    </div>
-                    
-                    <div class="w-1 h-12 bg-medium-blue"></div>
-                    <div class="arrow-down -mt-4"></div>
-
-                    <div class="p-4 bg-medium-blue text-white rounded-lg shadow-md text-center max-w-md">
-                        <span class="font-bold text-lg">STUDENT SUPPORT STAFF (THE SHIELD)</span>
-                        <span class="block text-sm">Enforces policy without explanation; absorbs blame.</span>
-                    </div>
-
-                    <div class="w-1 h-12 bg-medium-blue"></div>
-                    <div class="arrow-down -mt-4"></div>
-                    
-                    <div class="p-4 bg-white border-2 border-red rounded-lg shadow-sm text-center max-w-md">
-                        <span class="font-bold text-red">STUDENTS</span>
-                        <span class="block text-sm text-gray-700">Experience loss of service; disapproval is misdirected at staff.</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="dual-strategy" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-4 text-medium-blue">A Dual Strategy for Engagement</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto mb-8">To address the 2025 crisis, identity center staff must guide students in a two-pronged approach. This chart shows how to apply these complementary strategies based on the needs of different student populations.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-2xl font-bold text-dark-blue mb-3 flex items-center">
-                        <span class="icon-unicode text-medium-blue mr-3">&#127979;</span>
-                        Strategy A: "Activism 2.0" (Institutional)
-                    </h3>
-                    <p class="text-base text-gray-700">
-                        <strong class="text-medium-blue">Focus:</strong> Evolutionary Change.<br>
-                        <strong class="text-medium-blue">Goal:</strong> Work *with* the institution to find "win-win" solutions and long-term policy shifts. Use when addressing internal policy, curriculum, or governance.
-                    </p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-2xl font-bold text-dark-blue mb-3 flex items-center">
-                        <span class="icon-unicode text-green mr-3">&#129309;</span>
-                        Strategy B: Mutual Aid (Community)
-                    </h3>
-                    <p class="text-base text-gray-700">
-                        <strong class="text-green">Focus:</strong> Survival & Autonomy.<br>
-                        <strong class="text-green">Goal:</strong> Bypass the "corporatized" campus model. Build coalitions and partnerships with non-profits, alumni, and community groups to meet basic needs (food, funding).
-                    </p>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-2xl font-bold text-dark-blue mb-2 text-center">Applying Strategies to Student Needs</h3>
-                <p class="text-base text-gray-700 text-center mb-4">High-energy freshmen can be channeled into institutional change (Strategy A), while burnt-out seniors often require the immediate support of community mutual aid (Strategy B).</p>
-                <div class="chart-container" style="height: 400px; max-height: 450px;">
-                    <canvas id="strategyFocusChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="actions" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-4 text-medium-blue">Core Actionable Strategies</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Beyond the dual-strategy, the data points to four essential, immediate actions for all student support professionals navigating this crisis.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-2xl font-bold text-dark-blue mb-2">1. Acknowledge Unpaid Labor</h3>
-                    <p class="text-base text-gray-700"> Recognize that student activism functions as unpaid institutional labor. Engage with and amplify student voices. </p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-2xl font-bold text-dark-blue mb-2">2. Provide Proactive Training</h3>
-                    <p class="text-base text-gray-700">Implement formal, institutional training for activists on burnout management. Utilize existing resources like the Human Rights Residence Project toolkit.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-2xl font-bold text-dark-blue mb-2">3. Embody Critical Hope</h3>
-                    <p class="text-base text-gray-700">When macro-level goals are frozen by political deadlock, focus on actionable, micro-level changes. Ask, "What can we fix *today*?" This builds trust and momentum.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-2xl font-bold text-dark-blue mb-2">4. Listen & Validate</h3>
-                    <p class="text-base text-gray-700">When transparency is impossible due to legal or political "gag orders," the simple act of listening and validating student pain is a critical retention tool.</p>
-                </div>
-            </div>
-        </section>
-
-        <sec
-            </div>
-        </section>
+        </footer>
 
     </main>
 
-    <footer class="text-center py-8 mt-12 bg-dark-blue text-gray-300">
-        <p>This infographic synthesizes video webinars available on YouTube by @Student Affairs Now titled "Activism, Burnout, and Community," "Identity-Based Student Activism," and "Current Campus Context: Shutdowns and Showdowns."</p>
-        <p>Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for Tufts University. (Last Updated November 19, 2025)</p>
-        <style>
-a:link {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:visited {
-  color: pink;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-</style>
-    </footer>
-
     <script>
-        (function() {
-            const chartColors = {
-                red: '#FF6B6B',
-                yellow: '#FFD166',
-                green: '#06D6A0',
-                mediumBlue: '#118AB2',
-                darkBlue: '#073B4C'
-            };
+        function splitLabel(label, maxLength) {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
 
-            function wrapLabel(label, maxWidth = 16) {
-                const words = label.split(' ');
-                const lines = [];
-                let currentLine = '';
-                for (const word of words) {
-                    if ((currentLine + ' ' + word).trim().length > maxWidth) {
-                        if (currentLine) {
-                            lines.push(currentLine);
-                        }
-                        currentLine = word;
-                    } else {
-                        currentLine = (currentLine + ' ' + word).trim();
-                    }
-                }
-                if (currentLine) {
-                    lines.push(currentLine);
-                }
-                return lines;
-            }
-
-            const customTooltipTitle = function(tooltipItems) {
-                const item = tooltipItems[0];
-                let label = item.chart.data.labels[item.dataIndex];
-                if (Array.isArray(label)) {
-                    return label.join(' ');
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxLength) {
+                    currentLine += ' ' + words[i];
                 } else {
-                    return label;
+                    lines.push(currentLine);
+                    currentLine = words[i];
                 }
-            };
+            }
+            lines.push(currentLine);
+            return lines;
+        }
 
-            const globalChartOptions = {
+        const sharedTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- Chart 1: Interview Sentiment (Data-Grounded) ---
+        const ctxSentiment = document.getElementById('sentimentChart').getContext('2d');
+        
+        const sentimentLabels = ['Positive (53%)', 'Neutral (15%)', 'Negative (32%)'];
+        const processedSentimentLabels = sentimentLabels.map(l => splitLabel(l, 16));
+
+        new Chart(ctxSentiment, {
+            type: 'doughnut',
+            data: {
+                labels: processedSentimentLabels,
+                datasets: [{
+                    data: [53, 15, 32],
+                    backgroundColor: [
+                        '#10B981', // Green for Positive
+                        '#FCD34D', // Yellow for Neutral
+                        '#F87171'  // Red for Negative
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: customTooltipTitle
-                        },
-                        backgroundColor: '#073B4C',
-                        titleFont: { size: 14, weight: 'bold' },
-                        bodyFont: { size: 12 },
-                        padding: 10,
-                        cornerRadius: 4,
-                        displayColors: true
-                    },
-                    legend: {
-                        labels: {
-                            color: '#073B4C',
-                            font: {
-                                size: 12
-                            }
-                        }
-                    }
+                    legend: { position: 'bottom' },
+                    tooltip: sharedTooltipConfig
                 },
-                scales: {
-                    y: {
-                        ticks: { color: '#073B4C' },
-                        grid: { color: '#e2e8f0' }
-                    },
-                    x: {
-                        ticks: { color: '#073B4C' },
-                        grid: { display: false }
-                    }
-                }
-            };
-            
-            const globalDoughnutOptions = {
+                cutout: '70%'
+            }
+        });
+
+        // --- Chart 2: Application Channels (Data-Grounded) ---
+        const ctxChannels = document.getElementById('channelsChart').getContext('2d');
+        
+        const channelLabels = ['Applied Online (81%)', 'Recruiter (10%)', 'Employee Referral (6%)', 'Other (3%)'];
+        const processedChannelLabels = channelLabels.map(l => splitLabel(l, 16));
+
+        new Chart(ctxChannels, {
+            type: 'doughnut',
+            data: {
+                labels: processedChannelLabels,
+                datasets: [{
+                    data: [81, 10, 6, 3],
+                    backgroundColor: [
+                        '#F97316', // Orange 500 (Applied Online)
+                        '#2563EB', // Blue 600 (Recruiter)
+                        '#06B6D4', // Cyan 500 (Referral)
+                        '#94a3b8'  // Slate 400 (Other)
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: customTooltipTitle
-                        },
-                        backgroundColor: '#073B4C',
-                        titleFont: { size: 14, weight: 'bold' },
-                        bodyFont: { size: 12 },
-                        padding: 10,
-                        cornerRadius: 4,
-                        displayColors: true
-                    },
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: '#073B4C',
-                            font: {
-                                size: 12
-                            },
-                            padding: 15,
-                            boxWidth: 12
-                        }
-                    }
-                }
-            };
-
-            document.addEventListener('DOMContentLoaded', () => {
-
-                const ctx1 = document.getElementById('burnoutDriversChart')?.getContext('2d');
-                if (ctx1) {
-                    new Chart(ctx1, {
-                        type: 'doughnut',
-                        data: {
-                            labels: [
-                                wrapLabel('Unpaid Institutional Labor'), 
-                                wrapLabel('Economic Scarcity (Shutdown)'), 
-                                wrapLabel('Identity-Based Burden'), 
-                                wrapLabel('Institutional Betrayal')
-                            ],
-                            datasets: [{
-                                data: [30, 30, 25, 15],
-                                backgroundColor: [
-                                    chartColors.mediumBlue,
-                                    chartColors.red,
-                                    chartColors.yellow,
-                                    chartColors.darkBlue
-                                ],
-                                borderColor: '#ffffff',
-                                borderWidth: 4
-                            }]
-                        },
-                        options: {
-                            ...globalDoughnutOptions
-                        }
-                    });
-                }
-                
-                const ctx2 = document.getElementById('strategyFocusChart')?.getContext('2d');
-                if (ctx2) {
-                    new Chart(ctx2, {
-                        type: 'bar',
-                        data: {
-                            labels: [
-                                wrapLabel('High-Energy Freshmen'), 
-                                wrapLabel('Burnt-Out Seniors')
-                            ],
-                            datasets: [
-                                {
-                                    label: 'Strategy A: Institutional (Activism 2.0)',
-                                    data: [60, 40],
-                                    backgroundColor: chartColors.mediumBlue,
-                                    borderRadius: 4
-                                },
-                                {
-                                    label: 'Strategy B: Community (Mutual Aid)',
-                                    data: [40, 60],
-                                    backgroundColor: chartColors.green,
-                                    borderRadius: 4
-                                }
-                            ]
-                        },
-                        options: {
-                           ...globalChartOptions,
-                            scales: {
-                                x: { 
-                                    ticks: { color: '#073B4C', font: { size: 14 } }, 
-                                    grid: { display: false } 
-                                },
-                                y: { 
-                                    ticks: { callback: (v) => v + '%', color: '#073B4C' },
-                                    grid: { color: '#e2e8f0' },
-                                    title: { display: true, text: 'Recommended Focus Allocation', color: '#073B4C' }
-                                }
-                            },
-                            plugins: {
-                               ...globalChartOptions.plugins,
-                                legend: {
-                                    ...globalChartOptions.plugins.legend,
-                                    position: 'bottom',
-                                    padding: 15
-                                }
-                            }
-                        }
-                    });
-                }
-
-            });
-        })();
+                    legend: { position: 'bottom' },
+                    tooltip: sharedTooltipConfig
+                },
+                cutout: '70%'
+            }
+        });
     </script>
 </body>
 </html>
