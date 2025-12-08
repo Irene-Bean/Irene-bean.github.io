@@ -162,10 +162,16 @@
                         My Recommendation
                     </h3>
                     <p class="text-lg text-blue-700 leading-relaxed">
-                        I recommend tracking a Candidate Net Promoter Score (cNPS). This number takes what people say in their own words, turns it into something measurable, then links it clearly to hiring outcomes along with how strong your company looks to job seekers. 
+                        1. Above and beyond time-to-hire metrics, I suggest looking into Quality of Hire (QoH) tracking that connects the candidate's journey directly to their on-the-job performance, promotion velocity, and long-term retention.
+                    </p> 
+                    <p class="mt-2 text-sm text-blue-600 font-semibold">
+                        Success Metric: QoH 
+                    </p>
+                    <p class="text-lg text-blue-700 leading-relaxed">
+                       2. Additionally, I'd recommend tracking a Candidate Net Promoter Score (cNPS). This number takes what people say in their own words, turns it into something measurable, then links it clearly to hiring outcomes along with how strong your company looks to job seekers. 
                     </p>
                     <p class="mt-2 text-sm text-blue-600 font-semibold">
-                        Success Metric: cNPS (Promoters - Detractors)
+                        Success Metric: cNPS
                     </p>
                 </div>
             </section>
