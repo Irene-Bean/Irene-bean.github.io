@@ -55,7 +55,7 @@
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div>
                 <h1 class="text-3xl font-black tracking-tight text-gray-900">
-                    <span class="text-blue-600"><a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a></span> | ezCatering Cover Letter
+                    <span class="text-blue-600"><a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a></span> | ezCater Cover Letter
                 </h1>
                 <p class="mt-1 text-sm text-gray-500 font-medium tracking-wide uppercase">Candidate Experience Associate</p>
             </div>
@@ -75,7 +75,7 @@
             <div class="card bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
                 <h2 class="text-2xl font-bold mb-4">My Analysis</h2>
                 <p class="text-lg leading-relaxed opacity-90">
-                    Candidate experience is not just about scheduling; it's shaping each step with purpose. The graphic here is my brief analysis of the current state of ezCatering's candidate experience, along with some ideas for upping the Talent team's already strong record! Within my first 90 days as the candidate experience associate, my priority would be finding and turning quick fixes into real gains.
+                    Candidate experience is not just about scheduling; it's shaping each step with purpose. The graphic here is my brief analysis of the current state of ezCater's candidate experience, along with some ideas for upping the Talent team's already strong record! Within my first 90 days as the candidate experience associate, my priority would be finding and turning quick fixes into real gains.
                 </p>
             </div>
         </section>
@@ -83,9 +83,9 @@
                         <!-- Section 1: Interview Sentiment (Data-Grounded) -->
             <section class="col-span-1">
                 <div class="card h-full">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-indigo-600 pl-3">A majority of ezCatering candidates rate their experience positively.</h3>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-indigo-600 pl-3">A majority of ezCater candidates rate their experience positively.</h3>
                     <p class="text-gray-600 mb-6">
-                        Actual candidate feedback from Glassdoor demonstrates that ezCatering sets a high bar for candidate experience. Here's the precise breakdown of candidate sentiment. Prioritizing the small process improvements that address "neutral" feedback would be my first step to help raise positive sentiment up closer to 70%.
+                        Actual candidate feedback from Glassdoor demonstrates that ezCater sets a high bar for candidate experience. Here's the precise breakdown of candidate sentiment. Prioritizing the small process improvements that address "neutral" feedback would be my first step to help raise positive sentiment up closer to 70%.
                     </p>
                     <div class="chart-container">
                         <canvas id="sentimentChart"></canvas>
@@ -99,9 +99,9 @@
             <!-- Section 2: Application Channels (Data-Grounded) -->
             <section class="col-span-1">
                 <div class="card h-full">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-yellow-500 pl-3">81% of ezCatering candidates report applying online.</h3>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-yellow-500 pl-3">81% of ezCater candidates report applying online.</h3>
                     <p class="text-gray-600 mb-6">
-                        This number shows that ezCatering's online presence is undeniable. I would be curious to know the candidate journey into the application; whether they are redirected from a job board or applying directly n ezCatering's website. There may also be an opportunity to scale employee referral programs.
+                        This number shows that ezCater's online presence is undeniable. I would be curious to know the candidate journey into the application; whether they are redirected from a job board or applying directly n ezCater's website. There may also be an opportunity to scale employee referral programs.
                     </p>
                     <div class="chart-container">
                         <canvas id="channelsChart"></canvas>
@@ -218,7 +218,7 @@
         </div>
                 <footer class="mt-12 text-center text-gray-400 text-sm">
             <p>Thanks for reading and for considering my application for the Candidate Experience Associate role! </p>
-            <p> Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for ezCatering. (Last Updated December 08, 2025)</p>
+            <p> Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for ezCater. (Last Updated December 08, 2025)</p>
          <style>
 a:link { color: blue; background-color: transparent; text-decoration: none; } a:visited { color: blue; background-color: transparent; text-decoration: none; } a:hover { color: red; background-color: transparent; text-decoration: underline; } a:active { color: yellow; background-color: transparent; text-decoration: underline; } </style>
         </footer>
