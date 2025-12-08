@@ -162,13 +162,14 @@
                         My Recommendation
                     </h3>
                     <p class="text-lg text-blue-700 leading-relaxed">
-                        1. Above and beyond time-to-hire metrics, I suggest looking into Quality of Hire (QoH) tracking that connects the candidate's journey directly to their on-the-job performance, promotion velocity, and long-term retention.
+                        I can help enhance and measure the true value of best-in-class candidate experience, proving the Talent team's high ROI by showing how new hires are the direct engine for innovation and growth.
+                        Above and beyond time-to-hire metrics, I suggest looking into Quality of Hire (QoH) tracking that connects the candidate's journey directly to their on-the-job performance, promotion velocity, and long-term retention.
                     </p> 
                     <p class="mt-2 text-sm text-blue-600 font-semibold">
                         Success Metric: QoH 
                     </p>
                     <p class="text-lg text-blue-700 leading-relaxed">
-                       2. Additionally, I'd recommend tracking a Candidate Net Promoter Score (cNPS). This number takes what people say in their own words, turns it into something measurable, then links it clearly to hiring outcomes along with how strong your company looks to job seekers. 
+                       Additionally, I'd recommend tracking a Candidate Net Promoter Score (cNPS). This number takes what people say in their own words, turns it into something measurable, then links it clearly to hiring outcomes along with how strong your company looks to job seekers. 
                     </p>
                     <p class="mt-2 text-sm text-blue-600 font-semibold">
                         Success Metric: cNPS
@@ -180,7 +181,7 @@
                 <div class="card">
                     <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-gray-800 pl-3">My Approach</h3>
                     <p class="text-gray-600 mb-8">
-                        Moving beyond simple execution requires a cyclical approach to operations. This model demonstrates how we proactively suggest improvements and refine best practices based on data.
+                        My approach to continuous improvement merges best practices from L&D and tech development. Basically, here's the TLDR;
                     </p>
                                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center relative">
                         <!-- Connecting Line (Desktop) -->
