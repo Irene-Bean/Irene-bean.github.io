@@ -181,19 +181,16 @@
 a:link { color: blue; background-color: transparent; text-decoration: none; } a:visited { color: pink; background-color: transparent; text-decoration: none; } a:hover { color: red; background-color: transparent; text-decoration: underline; } a:active { color: yellow; background-color: transparent; text-decoration: underline; } </style>
 
 </main>
-
  <script>
         // PDF GENERATION FUNCTION
         async function generatePdf() {
             const input = document.getElementById('infographic-content');
             const pdfButton = document.getElementById('pdf-download-button');
             const header = document.getElementById('app-header');
-            
-            // 1. Temporarily hide elements that shouldn't be in the PDF
+            // 1. Temporarily hide elements that shouldn't be in the PDF//
             pdfButton.style.display = 'none';
             header.classList.remove('sticky-header'); // Remove sticky position for clean capture
             header.style.position = 'static'; 
-
             try {
                 // 2. Generate Canvas from HTML content
                 const canvas = await html2canvas(input, {
@@ -201,53 +198,40 @@ a:link { color: blue; background-color: transparent; text-decoration: none; } a:
                     logging: false,
                     useCORS: true
                 });
-
                 const imgData = canvas.toDataURL('image/jpeg', 0.9);
                 const { jsPDF } = window.jspdf;
-                
                 // A4 dimensions in mm
                 const pdfWidth = 210; 
                 const pdfHeight = 297; 
-                
                 // Content size calculations
                 const imgWidth = canvas.width;
                 const imgHeight = canvas.height;
                 const ratio = imgHeight / imgWidth;
-                
                 // Calculate the dimensions of the content image inside the PDF (10mm margins)
                 const contentWidth = pdfWidth - 20; 
                 const contentHeight = contentWidth * ratio;
-
                 const doc = new jsPDF('p', 'mm', 'a4');
                 let currentPagePosition = 0;
-                
                 // 3. Multi-page slicing logic for long infographics
                 const pageHeight = pdfHeight - 20; // Effective page height with margins
-
                 if (contentHeight > pageHeight) {
                     let pageNumber = 1;
-                    
                     while (currentPagePosition < contentHeight) {
                         if (pageNumber > 1) {
                             doc.addPage();
                         }
-                        
                         // Add the image slice to the PDF
                         // The third argument (y-position on PDF) is fixed at 10 (top margin)
                         // The fourth argument (-currentPagePosition) controls the vertical offset of the image inside the PDF
                         doc.addImage(imgData, 'JPEG', 10, 10 - currentPagePosition, contentWidth, contentHeight);
-
                         currentPagePosition += pageHeight;
                         pageNumber++;
                     }
-
                 } else {
                     // Single page content fits well
                     doc.addImage(imgData, 'JPEG', 10, 10, contentWidth, contentHeight);
                 }
-
                 doc.save('Strategic_Candidate_Experience.pdf');
-
             } catch (error) {
                 console.error("PDF generation failed:", error);
                 // Use a custom modal or alert fallback if absolutely necessary, but prefer console logging
@@ -259,15 +243,12 @@ a:link { color: blue; background-color: transparent; text-decoration: none; } a:
                 header.style.position = 'sticky'; 
             }
         }
-
-
         // CHART CONFIGURATION (Remains the same)
         function splitLabel(label, maxLength) {
             if (label.length <= maxLength) return label;
             const words = label.split(' ');
             const lines = [];
             let currentLine = words[0];
-
             for (let i = 1; i < words.length; i++) {
                 if (currentLine.length + 1 + words[i].length <= maxLength) {
                     currentLine += ' ' + words[i];
@@ -279,7 +260,6 @@ a:link { color: blue; background-color: transparent; text-decoration: none; } a:
             lines.push(currentLine);
             return lines;
         }
-
         const sharedTooltipConfig = {
             callbacks: {
                 title: function(tooltipItems) {
@@ -293,15 +273,10 @@ a:link { color: blue; background-color: transparent; text-decoration: none; } a:
                 }
             }
         };
-
-
-
     // --- Chart 1: Interview Sentiment (Data-Grounded) ---
     const ctxSentiment = document.getElementById('sentimentChart').getContext('2d');
-    
     const sentimentLabels = ['Positive (53%)', 'Neutral (15%)', 'Negative (32%)'];
     const processedSentimentLabels = sentimentLabels.map(l => splitLabel(l, 16));
-
     new Chart(ctxSentiment, {
         type: 'doughnut',
         data: {
@@ -327,13 +302,10 @@ a:link { color: blue; background-color: transparent; text-decoration: none; } a:
             cutout: '70%'
         }
     });
-
     // --- Chart 2: Application Channels (Data-Grounded) ---
     const ctxChannels = document.getElementById('channelsChart').getContext('2d');
-    
     const channelLabels = ['Applied Online (81%)', 'Recruiter (10%)', 'Employee Referral (6%)', 'Other (3%)'];
     const processedChannelLabels = channelLabels.map(l => splitLabel(l, 16));
-
     new Chart(ctxChannels, {
         type: 'doughnut',
         data: {
