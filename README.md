@@ -14,7 +14,6 @@
                 </svg>                      
                 Download as PDF
             </button>
-            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold ml-4 hidden md:inline">Metrics Driven</span>
         </div>
         <div class="hidden md:block">
             <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">Metrics Driven</span>
