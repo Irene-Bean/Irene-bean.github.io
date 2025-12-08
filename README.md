@@ -163,6 +163,8 @@
                     </h3>
                     <p class="text-lg text-blue-700 leading-relaxed">
                         I can help enhance and measure the true value of best-in-class candidate experience, proving the Talent team's high ROI by showing how new hires are the direct engine for innovation and growth.
+                        <p/>
+                        <p class="text-lg text-blue-700 leading-relaxed">
                         Above and beyond time-to-hire metrics, I suggest looking into Quality of Hire (QoH) tracking that connects the candidate's journey directly to their on-the-job performance, promotion velocity, and long-term retention.
                     </p> 
                     <p class="mt-2 text-sm text-blue-600 font-semibold">
