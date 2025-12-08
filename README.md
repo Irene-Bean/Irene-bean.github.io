@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,11 +60,6 @@
                 </button>
                 <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold ml-4 hidden md:inline">Metrics Driven</span>
             </div>
-            <div class="hidden md:block">
-                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">Metrics Driven</span>
-                <span class="px-3 py-1 rounded-full bg-cyan-100 text-cyan-800 text-xs font-bold ml-2">Process Focused</span>
-            </div>
-        </div>
     </header>
 
     <main class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
