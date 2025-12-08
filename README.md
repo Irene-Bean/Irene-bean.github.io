@@ -211,7 +211,7 @@
             <p>Thanks for reading and for considering my application for the Candidate Experience Associate role! </p>
             <p> Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for ezCatering. (Last Updated December 08, 2025)</p>
          <style>
-a:link { color: blue; background-color: transparent; text-decoration: none; } a:visited { color: pink; background-color: transparent; text-decoration: none; } a:hover { color: red; background-color: transparent; text-decoration: underline; } a:active { color: yellow; background-color: transparent; text-decoration: underline; } </style>
+a:link { color: blue; background-color: transparent; text-decoration: none; } a:visited { color: blue; background-color: transparent; text-decoration: none; } a:hover { color: red; background-color: transparent; text-decoration: underline; } a:active { color: yellow; background-color: transparent; text-decoration: underline; } </style>
         </footer>
     </main>
     <script>
