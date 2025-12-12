@@ -215,14 +215,12 @@
                     </div>
                 </div>
             </section>
-        </div>
                 <footer class="mt-12 text-center text-gray-400 text-sm">
             <p>Thanks for reading and for considering my application for the Candidate Experience Associate role! </p>
             <p> Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for ezCater. (Last Updated December 08, 2025)</p>
          <style>
 a:link { color: blue; background-color: transparent; text-decoration: none; } a:visited { color: blue; background-color: transparent; text-decoration: none; } a:hover { color: red; background-color: transparent; text-decoration: underline; } a:active { color: yellow; background-color: transparent; text-decoration: underline; } </style>
         </footer>
-    </main>
     <script>
         // PDF GENERATION FUNCTION
         async function generatePdf() {
@@ -376,5 +374,3 @@ a:link { color: blue; background-color: transparent; text-decoration: none; } a:
             }
         });
     </script>
-</body>
-</html>
