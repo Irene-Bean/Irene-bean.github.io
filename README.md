@@ -176,8 +176,6 @@
                     <p class="mt-2 text-sm text-blue-600 font-semibold">
                         Success Metric: cNPS
                     </p>
-                </div>
-            </section>
             <!-- Section 4: The Optimization Cycle (Diagram) -->
             <section class="col-span-1 md:col-span-2">
                 <div class="card">
