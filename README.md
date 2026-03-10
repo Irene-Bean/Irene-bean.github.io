@@ -203,7 +203,7 @@
                         <div class="h-[1px] w-8 bg-[#E9A68A]/40"></div>
                     </div>
                     <p class="text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto tracking-tight">
-                        "Designed by <span class="terracotta-text font-bold">Irene Mutwiri, M.Ed.</span> for <span class="terracotta-text font-bold">@WellbyCami</span>."
+                        "Designed by <span class="terracotta-text font-bold"><a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold">@WellbyCami</span>."
                     </p>
                 </div>
                 <div class="relative z-10 flex flex-col items-center gap-4 pt-10 mt-10 border-t border-white/5 w-full max-w-sm mx-auto">
@@ -214,7 +214,7 @@
                     <input 
                         id="last-updated"
                         type="date" 
-                        value="2024-05-20"
+                        value="2026-03-07"
                         class="bg-[#3D2614] text-white text-sm border border-[#E9A68A]/10 rounded-2xl px-6 py-3 focus:outline-none focus:ring-2 focus:ring-[#E9A68A] cursor-pointer w-full text-center transition-all hover:bg-[#4D311A]"
                     />
                 </div>
