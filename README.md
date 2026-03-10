@@ -202,7 +202,7 @@
                         <div class="h-[1px] w-8 bg-[#E9A68A]/40"></div>
                     </div>
                     <p class="text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto tracking-tight">
-                        "Designed by <span class="terracotta-text font-bold"><a href="https://www.irenemutwiri.com/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold"><a href="https://www.weelbycami.com/">@WellbyCami</span>."
+                        "Designed by <span class="terracotta-text font-bold"><a href="https://www.irenemutwiri.com/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold"><a href="https://www.wellbycami.com/">@WellbyCami</a></span>.
                     </p>
                 </div>
                 <div class="relative z-10 flex flex-col items-center gap-4 pt-10 mt-10 border-t border-white/5 w-full max-w-sm mx-auto">
