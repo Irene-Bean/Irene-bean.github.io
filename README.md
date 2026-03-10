@@ -1,3 +1,9 @@
+import React, { useState } from 'react';
+import { 
+  Brain, Zap, HeartPulse, Activity, Coffee, Moon, Sun, RefreshCw,
+  ArrowRight, Sparkles, ShieldCheck, Calendar
+} from 'lucide-react';
+
 const App = () => {
   const [selectedNode, setSelectedNode] = useState(null);
   const [lastUpdated, setLastUpdated] = useState("2024-05-20");
@@ -74,7 +80,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-[#FDF8F5] text-[#2D1B0D] font-sans pt-8 pb-20">
       <main className="max-w-6xl mx-auto p-6 space-y-8">
-          {/* HERO SECTION: ADAPTIVE DECISION TREE */}
+        {/* HERO SECTION: ADAPTIVE DECISION TREE */}
         <section className="bg-white rounded-[2rem] shadow-sm border border-[#E9A68A]/10 overflow-hidden">
           <div className="bg-[#2D1B0D] p-10 text-center relative">
              <div className="absolute top-6 left-6 opacity-10"><Brain className="text-[#E9A68A] w-12 h-12" /></div>
@@ -134,7 +140,7 @@ const App = () => {
                         <Sparkles className="w-4 h-4" /> Recommended Protocol
                       </div>
                       <h4 className="text-4xl font-bold mb-8 tracking-tight">{results[selectedNode].title}</h4>
-                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                         <div className="space-y-4">
                           <p className="text-[#E9A68A] text-[10px] font-black uppercase tracking-widest mb-4 border-l-2 border-[#E9A68A] pl-3">Strategic Tactics</p>
                           <div className="grid grid-cols-1 gap-3">
@@ -193,12 +199,12 @@ const App = () => {
                     <RefreshCw className="w-4 h-4 text-[#E9A68A]" />
                   </button>
                 </div>
-                                <div className="space-y-10">
+                <div className="space-y-10">
                   <div>
                     <p className="text-6xl font-bold mb-2 tracking-tighter">94.2%</p>
                     <p className="text-[11px] text-[#E9A68A] font-bold uppercase tracking-widest opacity-80">Somatic Safety Index</p>
                   </div>
-                                    <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-4">
                     <div className="p-5 bg-white/5 rounded-3xl border border-white/5">
                       <div className="flex items-center gap-2 mb-3">
                         <Sun className="w-5 h-5 text-[#E9A68A]" />
@@ -252,10 +258,11 @@ const App = () => {
                   className="bg-[#3D2614] text-white text-sm border border-[#E9A68A]/10 rounded-2xl px-6 py-3 focus:outline-none focus:ring-2 focus:ring-[#E9A68A] cursor-pointer w-full text-center transition-all hover:bg-[#4D311A]"
                 />
              </div>
-                          <div className="absolute top-0 left-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -ml-32 -mt-32"></div>
+             <div className="absolute top-0 left-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -ml-32 -mt-32"></div>
              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -mr-32 -mb-32"></div>
           </div>
         </footer>
+
       </main>
     </div>
   );
