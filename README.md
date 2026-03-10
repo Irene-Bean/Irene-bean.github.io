@@ -41,9 +41,9 @@
                 <div class="absolute top-6 left-6 opacity-10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.54-2.44 2.5 2.5 0 0 1-2.5-2.5V4.5A2.5 2.5 0 0 1 4.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.54-2.44 2.5 2.5 0 0 0 2.5-2.5V4.5A2.5 2.5 0 0 0 19.5 2z"/></svg>
                 </div>
-                <h2 class="text-white text-3xl font-bold mb-3 tracking-tight"> Hi Cami, here's an MVP Content-as-Curriculum Strategy</h2>
+                <h2 class="text-white text-3xl font-bold mb-3 tracking-tight"> Hi Cami, Irene here!</h2>
                 <p class="terracotta-text text-sm max-w-lg mx-auto font-medium opacity-90">
-                    I’ve put together a proof-of-concept dashboard to help you brainstorm intentional content for nervous system regulation.
+                    I’ve put together this proof-of-concept dashboard to help you brainstorm intentional content for nervous system regulation.
                 </p>
             </div>
             <div class="p-10" id="assessment-container">
