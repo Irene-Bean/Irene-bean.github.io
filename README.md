@@ -1,14 +1,3 @@
-  // Color Palette Constants
-  const colors = {
-    deepCocoa: 'bg-[#2D1B0D]',
-    textCocoa: 'text-[#2D1B0D]',
-    borderCocoa: 'border-[#2D1B0D]',
-    terracotta: 'bg-[#E9A68A]',
-    terracottaLight: 'bg-[#F2C8B8]',
-    terracottaText: 'text-[#E9A68A]',
-    cream: 'bg-[#FDF8F5]',
-    sand: 'bg-[#F5E6D3]'
-  };
   const decisionTree = {
     id: 'root',
     question: "How would you describe your audience's current physiological arousal level?",
