@@ -42,23 +42,23 @@
                 <div class="absolute top-6 left-6 opacity-10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.54-2.44 2.5 2.5 0 0 1-2.5-2.5V4.5A2.5 2.5 0 0 1 4.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.54-2.44 2.5 2.5 0 0 0 2.5-2.5V4.5A2.5 2.5 0 0 0 19.5 2z"/></svg>
                 </div>
-                <h2 class="text-white text-3xl font-bold mb-3 tracking-tight">Adaptive Content Selector</h2>
+                <h2 class="text-white text-3xl font-bold mb-3 tracking-tight">Content-as-Curriculum Strategy</h2>
                 <p class="terracotta-text text-sm max-w-lg mx-auto font-medium opacity-90">
-                    Diagnose audience physiological state to determine the most effective strategy.
+                    This is a MVP dashboard to help brainstorm intentional content for nervous system regulation.
                 </p>
             </div>
             <div class="p-10" id="assessment-container">
                 <!-- Assessment View (Default) -->
                 <div id="view-selector" class="fade-in">
                     <h3 class="text-center font-bold text-[#2D1B0D] mb-10 text-xl">
-                        How would you describe your audience's current physiological arousal level?
+                        What state of regulation would you like to focus on today?
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <button onclick="showResult('sympathetic')" class="p-8 text-center border-2 border-[#E9A68A]/30 rounded-3xl transition-all hover:scale-[1.02] hover:border-[#E9A68A] flex flex-col items-center group bg-[#FDF8F5]">
                             <div class="bg-white p-3 rounded-full mb-4 shadow-sm group-hover:shadow-md transition-all">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                             </div>
-                            <span class="font-bold text-lg mb-2">High Arousal</span>
+                            <span class="font-bold text-lg mb-2">Activated</span>
                             <span class="text-xs opacity-70 leading-relaxed font-medium">Frantic, hyper-focused, anxious, or overwhelmed</span>
                             <div class="mt-6 flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity terracotta-text">
                                 Select <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -68,7 +68,7 @@
                             <div class="bg-white p-3 rounded-full mb-4 shadow-sm group-hover:shadow-md transition-all">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                             </div>
-                            <span class="font-bold text-lg mb-2">Low Arousal</span>
+                            <span class="font-bold text-lg mb-2">Shutdown</span>
                             <span class="text-xs opacity-70 leading-relaxed font-medium">Frozen, numb, procrastinating, or dissociated</span>
                             <div class="mt-6 flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity terracotta-text">
                                 Select <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -199,11 +199,11 @@
                 <div class="relative z-10 flex flex-col items-center gap-4">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="h-[1px] w-8 bg-[#E9A68A]/40"></div>
-                        <p class="text-[10px] font-black terracotta-text uppercase tracking-[0.4em]">Designer Credit</p>
+                        <p class="text-[10px] font-black terracotta-text uppercase tracking-[0.4em]">Credit</p>
                         <div class="h-[1px] w-8 bg-[#E9A68A]/40"></div>
                     </div>
                     <p class="text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto tracking-tight">
-                        "Designed by <span class="terracotta-text font-bold"><a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold">@WellbyCami</span>."
+                        "Designed by <span class="terracotta-text font-bold"><a href="https://www.irenemutwiri.com/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold"><a href="https://www.weelbycami.com/">@WellbyCami</span>."
                     </p>
                 </div>
                 <div class="relative z-10 flex flex-col items-center gap-4 pt-10 mt-10 border-t border-white/5 w-full max-w-sm mx-auto">
