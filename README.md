@@ -3,19 +3,16 @@ import {
   Brain, Zap, HeartPulse, Activity, Coffee, Moon, Sun, RefreshCw,
   ArrowRight, Sparkles, ShieldCheck, Calendar
 } from 'lucide-react';
-
 const App = () => {
   const [selectedNode, setSelectedNode] = useState(null);
   const [lastUpdated, setLastUpdated] = useState("2024-05-20");
   const [isSyncing, setIsSyncing] = useState(false);
-
   const syncData = () => {
     setIsSyncing(true);
     setTimeout(() => {
       setIsSyncing(false);
     }, 1200);
   };
-
   // Color Palette Constants
   const colors = {
     deepCocoa: 'bg-[#2D1B0D]',
@@ -27,7 +24,6 @@ const App = () => {
     cream: 'bg-[#FDF8F5]',
     sand: 'bg-[#F5E6D3]'
   };
-
   const decisionTree = {
     id: 'root',
     question: "How would you describe your audience's current physiological arousal level?",
