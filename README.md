@@ -1,374 +1,270 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Irene Mutwiri, M.Ed. | Candidate Experience Associate</title>
-    <!-- External Libraries for PDF Generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #F0F4F8; color: #1E293B; }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container { height: 350px; }
-        }
-        .card {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 1.5rem;
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        .step-circle {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        /* Style for the sticky header that needs to be toggled */
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-    </style>
-</head>
-<body class="bg-slate-50">
-    <header id="app-header" class="bg-white shadow-md sticky-header">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <div>
-                <h1 class="text-3xl font-black tracking-tight text-gray-900">
-                    <span class="text-blue-600"><a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a></span> | ezCater Cover Letter
-                </h1>
-                <p class="mt-1 text-sm text-gray-500 font-medium tracking-wide uppercase">Candidate Experience Associate</p>
-            </div>
-            <div class="flex items-center">
-                <button id="pdf-download-button" onclick="generatePdf()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
-                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.44-3.44a.75.75 0 1 1 1.06 1.06l-4.75 4.75a.75.75 0 0 1-1.06 0l-4.75-4.75a.75.75 0 1 1 1.06-1.06l3.44 3.44V3a.75.75 0 0 1 .75-.75ZM7.5 18a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Z" clip-rule="evenodd" />
-                    </svg>                      
-                    Download as PDF
-                </button>
-            </div>
-        </div>
-    </header>
-    <main id="infographic-content" class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-        <!-- Introduction Section -->
-        <section class="mb-12">
-            <div class="card bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
-                <h2 class="text-2xl font-bold mb-4">My Analysis</h2>
-                <p class="text-lg leading-relaxed opacity-90">
-                    Candidate experience is not just about scheduling; it's shaping each step with purpose. The graphic here is my brief analysis of the current state of ezCater's candidate experience, along with some ideas for upping the Talent team's already strong record! Within my first 90 days as the candidate experience associate, my priority would be finding and turning quick fixes into real gains.
-                </p>
-            </div>
+import React, { useState } from 'react';
+import { 
+  Brain, Zap, HeartPulse, Activity, Coffee, Moon, Sun, RefreshCw,
+  ArrowRight, Sparkles, ShieldCheck, Calendar
+} from 'lucide-react';
+
+const App = () => {
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState("2024-05-20");
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const syncData = () => {
+    setIsSyncing(true);
+    setTimeout(() => {
+      setIsSyncing(false);
+    }, 1200);
+  };
+
+  // Color Palette Constants
+  const colors = {
+    deepCocoa: 'bg-[#2D1B0D]',
+    textCocoa: 'text-[#2D1B0D]',
+    borderCocoa: 'border-[#2D1B0D]',
+    terracotta: 'bg-[#E9A68A]',
+    terracottaLight: 'bg-[#F2C8B8]',
+    terracottaText: 'text-[#E9A68A]',
+    cream: 'bg-[#FDF8F5]',
+    sand: 'bg-[#F5E6D3]'
+  };
+
+  const decisionTree = {
+    id: 'root',
+    question: "How would you describe your audience's current physiological arousal level?",
+    options: [
+      { 
+        label: "High Arousal", 
+        subtext: "Frantic, hyper-focused, anxious, or overwhelmed",
+        next: 'sympathetic', 
+        color: 'bg-[#FDF8F5] border-[#E9A68A]/30 text-[#2D1B0D] hover:border-[#E9A68A]',
+        icon: <Zap className="w-5 h-5 mb-2 text-[#E9A68A]" />
+      },
+      { 
+        label: "Low Arousal", 
+        subtext: "Frozen, numb, procrastinating, or dissociated",
+        next: 'dorsal', 
+        color: 'bg-[#FDF8F5] border-[#E9A68A]/30 text-[#2D1B0D] hover:border-[#E9A68A]',
+        icon: <Moon className="w-5 h-5 mb-2 text-[#E9A68A]" />
+      },
+      { 
+        label: "Social Safety", 
+        subtext: "Regulated, creative, connected, and curious",
+        next: 'ventral', 
+        color: 'bg-[#FDF8F5] border-[#E9A68A]/30 text-[#2D1B0D] hover:border-[#E9A68A]',
+        icon: <HeartPulse className="w-5 h-5 mb-2 text-[#E9A68A]" />
+      }
+    ]
+  };
+
+  const results = {
+    sympathetic: {
+      title: "The 'Settle' Strategy",
+      focus: "Down-Regulation & Sensory Softness",
+      tactics: ["Low-contrast visuals", "Ambient audio loops", "Single-choice carousels", "Short, calming breathwork cues"],
+      impact: "Reduces Decision Fatigue & Adrenaline Spikes"
+    },
+    dorsal: {
+      title: "The 'Gentle Spark' Strategy",
+      focus: "Safe Mobilization",
+      tactics: ["High-contrast 'Waking' cues", "Micro-wins (15-30s videos)", "Physical movement prompts", "Bright, warm lighting visuals"],
+      impact: "Combats Dissociation & Functional Freeze"
+    },
+    ventral: {
+      title: "The 'Deep Flow' Strategy",
+      focus: "Collaborative Mastery",
+      tactics: ["Long-form immersive content", "Interactive community builds", "90-min co-working", "Non-linear problem solving prompts"],
+      impact: "Maximizes Creative ROI & Community Bond"
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#FDF8F5] text-[#2D1B0D] font-sans pt-8 pb-20">
+      <main className="max-w-6xl mx-auto p-6 space-y-8">
+          {/* HERO SECTION: ADAPTIVE DECISION TREE */}
+        <section className="bg-white rounded-[2rem] shadow-sm border border-[#E9A68A]/10 overflow-hidden">
+          <div className="bg-[#2D1B0D] p-10 text-center relative">
+             <div className="absolute top-6 left-6 opacity-10"><Brain className="text-[#E9A68A] w-12 h-12" /></div>
+             <h2 className="text-white text-3xl font-bold mb-3 tracking-tight">Adaptive Content Selector</h2>
+             <p className="text-[#E9A68A] text-sm max-w-lg mx-auto font-medium opacity-90">
+               Diagnose audience physiological state to determine the most effective strategy.
+             </p>
+          </div>
+          <div className="p-10">
+            {!selectedNode ? (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <h3 className="text-center font-bold text-[#2D1B0D] mb-10 text-xl">
+                  {decisionTree.question}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {decisionTree.options.map((opt) => (
+                    <button
+                      key={opt.next}
+                      onClick={() => setSelectedNode(opt.next)}
+                      className={`p-8 text-center border-2 rounded-3xl transition-all hover:scale-[1.02] flex flex-col items-center ${opt.color} group`}
+                    >
+                      <div className="bg-white p-3 rounded-full mb-4 shadow-sm group-hover:shadow-md transition-all">
+                        {opt.icon}
+                      </div>
+                      <span className="font-bold text-lg mb-2">{opt.label}</span>
+                      <span className="text-xs opacity-70 leading-relaxed font-medium">{opt.subtext}</span>
+                      <div className="mt-6 flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity text-[#E9A68A]">
+                        Select <ArrowRight className="w-3 h-3" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="animate-in zoom-in-95 duration-500">
+                <div className="flex flex-col md:flex-row items-center justify-between mb-8 pb-6 border-b border-[#E9A68A]/10 gap-4">
+                  <button 
+                    onClick={() => setSelectedNode(null)} 
+                    className="group flex items-center gap-2 text-[#2D1B0D] font-bold text-xs uppercase tracking-widest"
+                  >
+                    <div className="bg-[#E9A68A]/10 p-2 rounded-full group-hover:bg-[#E9A68A]/20 transition-colors">
+                      <RefreshCw className="w-3 h-3 text-[#E9A68A]" />
+                    </div>
+                    Restart Assessment
+                  </button>
+                  <div className="flex items-center gap-3">
+                     <span className="text-[10px] text-[#2D1B0D]/40 font-bold uppercase tracking-widest">Protocol</span>
+                     <div className="px-5 py-2 bg-[#E9A68A] text-white text-[10px] font-black rounded-full uppercase tracking-[0.2em] shadow-lg shadow-[#E9A68A]/20">
+                       {selectedNode} Strategy
+                     </div>
+                  </div>
+                </div>
+                <div className="w-full">
+                  <div className="bg-[#2D1B0D] rounded-[2rem] p-10 text-white shadow-2xl relative overflow-hidden">
+                     <div className="relative z-10">
+                      <div className="flex items-center gap-2 text-[#E9A68A] text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+                        <Sparkles className="w-4 h-4" /> Recommended Protocol
+                      </div>
+                      <h4 className="text-4xl font-bold mb-8 tracking-tight">{results[selectedNode].title}</h4>
+                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                        <div className="space-y-4">
+                          <p className="text-[#E9A68A] text-[10px] font-black uppercase tracking-widest mb-4 border-l-2 border-[#E9A68A] pl-3">Strategic Tactics</p>
+                          <div className="grid grid-cols-1 gap-3">
+                            {results[selectedNode].tactics.map((t, i) => (
+                              <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                                <div className="w-1.5 h-1.5 bg-[#E9A68A] rounded-full shrink-0 shadow-[0_0_8px_#E9A68A]" />
+                                <span className="text-sm font-medium tracking-wide">{t}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex flex-col justify-center">
+                          <div className="bg-[#E9A68A]/10 p-8 rounded-3xl border border-[#E9A68A]/20 text-center">
+                             <p className="text-[10px] text-[#E9A68A] font-bold uppercase mb-3 tracking-widest">Projected Outcome</p>
+                             <p className="text-xl font-medium leading-relaxed italic text-white/90">"{results[selectedNode].impact}"</p>
+                          </div>
+                        </div>
+                      </div>
+                     </div>
+                     <div className="absolute top-0 right-0 w-80 h-80 bg-[#E9A68A]/5 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </section>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Section 1: Interview Sentiment (Data-Grounded) -->
-            <section class="col-span-1">
-                <div class="card h-full">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-indigo-600 pl-3">A majority of ezCater candidates rate their experience positively.</h3>
-                    <p class="text-gray-600 mb-6">
-                        Actual candidate feedback from Glassdoor demonstrates that ezCater sets a high bar for candidate experience. Here's the precise breakdown of candidate sentiment. Prioritizing the small process improvements that address "neutral" feedback would be my first step to help raise positive sentiment up closer to 70%.
-                    </p>
-                    <div class="chart-container">
-                        <canvas id="sentimentChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <p class="text-3xl font-bold text-green-600">53%</p>
-                        <p class="text-sm text-gray-500">Positive Experience</p>
-                    </div>
+        {/* MIDDLE SECTION: PULSE & ANCHORS */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-7">
+            <div className="bg-white p-10 rounded-[2rem] border border-[#E9A68A]/10 shadow-sm h-full">
+              <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-[#2D1B0D]">
+                <ShieldCheck className="text-[#E9A68A] w-6 h-6" />
+                Strategic Anchors
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-6 bg-[#FDF8F5] rounded-3xl border border-[#E9A68A]/5">
+                  <p className="text-[10px] font-black text-[#E9A68A] uppercase mb-3 tracking-widest">Rest Ethic</p>
+                  <p className="text-sm text-[#2D1B0D]/70 font-medium leading-relaxed">Reframing rest as a performance prerequisite for creatives rather than a reward.</p>
                 </div>
-            </section>
-            <!-- Section 2: Application Channels (Data-Grounded) -->
-            <section class="col-span-1">
-                <div class="card h-full">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-yellow-500 pl-3">81% of ezCater candidates report applying online.</h3>
-                    <p class="text-gray-600 mb-6">
-                        This number shows that ezCater's online presence is undeniable. I would be curious to know the candidate journey into the application; whether they are redirected from a job board or applying directly n ezCater's website. There may also be an opportunity to scale employee referral programs.
-                    </p>
-                    <div class="chart-container">
-                        <canvas id="channelsChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <p class="text-3xl font-bold text-yellow-600">81%</p>
-                        <p class="text-sm text-gray-500">Applied Online</p>
-                    </div>
+                <div className="p-6 bg-[#FDF8F5] rounded-3xl border border-[#E9A68A]/5">
+                  <p className="text-[10px] font-black text-[#E9A68A] uppercase mb-3 tracking-widest">Temporal Opt.</p>
+                  <p className="text-sm text-[#2D1B0D]/70 font-medium leading-relaxed">Aligning output with ultradian cycles (90-min blocks) and biological rhythms.</p>
                 </div>
-            </section>
-            <!-- Section 3: Qualitative Themes -->
-            <section class="col-span-1 md:col-span-2">
-                <div class="card">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-indigo-600 pl-3">Key Highlights</h3>
-                    <ul class="space-y-3 pt-4">
-                        <!-- Strength: Interviewer Quality -->
-                        <li class="flex items-start">
-                            <span class="text-green-500 mr-2 text-xl">&#10003;</span>
-                            <div>
-                                <p class="font-medium text-gray-900">Interviewer Quality & Support</p>
-                                <p class="text-sm text-gray-600">Candidates highlight interviewers and recruiters as professional, kind, genuine, and supportive, often describing the overall experience as "top-notch" or "fun."</p>
-                            </div>
-                        </li>
-                        <!-- Strength: Transparency & Prep -->
-                        <li class="flex items-start">
-                            <span class="text-green-500 mr-2 text-xl">&#10003;</span>
-                            <div>
-                                <p class="font-medium text-gray-900">High Transparency & Preparation</p>
-                                <p class="text-sm text-gray-600">The hiring process is praised for transparency, clear communication, and providing helpful preparation materials (questions, videos) in advance.</p>
-                            </div>
-                        </li>
-                        <!-- Challenge: Internal Consistency -->
-                        <li class="flex items-start">
-                            <span class="text-red-500 mr-2 text-xl">&#10007;</span>
-                            <div>
-                                <p class="font-medium text-gray-900">Internal Alignment & Consistency</p>
-                                <p class="text-sm text-gray-600">A significant opportunity exists to improve internal alignment, structural consistency across teams.</p>
-                            </div>
-                        </li>
-                        <!-- Observation: Time to Hire -->
-                        <li class="flex items-start">
-                            <span class="text-yellow-500 mr-2 text-xl">&#9888;</span>
-                            <div>
-                                <p class="font-medium text-gray-900">Variable Time-to-Hire</p>
-                                <p class="text-sm text-gray-600">The average hiring time is approximately 17.76 days, with time-to-hire ranging from one day for some roles up to 49 days for others. There may be opportunity here to standardize and streamline workflows.</p>
-                            </div>
-                        </li>
-                    </ul>
+              </div>
+            </div>
+          </div>
+          <aside className="lg:col-span-5">
+            <div className="bg-[#2D1B0D] rounded-[2rem] p-10 text-white relative overflow-hidden shadow-xl h-full flex flex-col justify-between">
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-10">
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E9A68A]">System Pulse</h3>
+                  <button 
+                    onClick={syncData}
+                    className={`p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors ${isSyncing ? 'animate-spin' : ''}`}
+                  >
+                    <RefreshCw className="w-4 h-4 text-[#E9A68A]" />
+                  </button>
                 </div>
-            </section>
-            <!-- Section: Recommendation Callout (cNPS) -->
-            <section class="col-span-1 md:col-span-2">
-                <div class="card bg-blue-50 border-l-4 border-blue-600 p-6">
-                    <h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 mr-3">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12Z" />
-                        </svg>
-                        My Recommendation
-                    </h3>
-                    <p class="text-lg text-blue-700 leading-relaxed">
-                        I can help enhance and measure the true value of best-in-class candidate experience, proving the Talent team's high ROI by showing how new hires are the direct engine for innovation and growth.
-                        <p/>
-                        <p class="text-lg text-blue-700 leading-relaxed">
-                        Above and beyond time-to-hire metrics, I suggest looking into Quality of Hire (QoH) tracking that connects the candidate's journey directly to their on-the-job performance, promotion velocity, and long-term retention.
-                    </p> 
-                    <p class="mt-2 text-sm text-blue-600 font-semibold">
-                        Success Metric: QoH 
-                    </p>
-                    <p class="text-lg text-blue-700 leading-relaxed">
-                       Additionally, I'd recommend tracking a Candidate Net Promoter Score (cNPS). This number takes what people say in their own words, turns it into something measurable, then links it clearly to hiring outcomes along with how strong your company looks to job seekers. 
-                    </p>
-                    <p class="mt-2 text-sm text-blue-600 font-semibold">
-                        Success Metric: cNPS
-                    </p>
-            <!-- Section 4: The Optimization Cycle (Diagram) -->
-            <section class="col-span-1 md:col-span-2">
-                <div class="card">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 border-l-4 border-gray-800 pl-3">My Approach</h3>
-                    <p class="text-gray-600 mb-8">
-                        My approach to continuous improvement merges best practices from L&D and tech development. Basically, here's the TLDR;
-                    </p>
-                                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center relative">
-                        <!-- Connecting Line (Desktop) -->
-                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
-                        <!-- Step 1 -->
-                        <div class="flex flex-col items-center bg-white p-4">
-                            <div class="step-circle bg-blue-600 text-xl shadow-lg">1</div>
-                            <h4 class="font-bold text-lg mt-2 text-blue-800">Assess</h4>
-                            <p class="text-sm text-gray-500 mt-1">Analyze current state of candidate experience journey and workflows</p>
-                        </div>
-                        <!-- Step 2 -->
-                        <div class="flex flex-col items-center bg-white p-4">
-                            <div class="step-circle bg-cyan-500 text-xl shadow-lg">2</div>
-                            <h4 class="font-bold text-lg mt-2 text-cyan-800">Suggest</h4>
-                            <p class="text-sm text-gray-500 mt-1">Propose low-lift, high-impact fixes to target "neutral" experiences </p>
-                        </div>
-                        <!-- Step 3 -->
-                        <div class="flex flex-col items-center bg-white p-4">
-                            <div class="step-circle bg-orange-500 text-xl shadow-lg">3</div>
-                            <h4 class="font-bold text-lg mt-2 text-orange-800">Enhance</h4>
-                            <p class="text-sm text-gray-500 mt-1">Co-create and refine SOPs, best practices, and documentation</p>
-                        </div>
-                        <!-- Step 4 -->
-                        <div class="flex flex-col items-center bg-white p-4">
-                            <div class="step-circle bg-gray-800 text-xl shadow-lg">4</div>
-                            <h4 class="font-bold text-lg mt-2 text-gray-800">Report</h4>
-                            <p class="text-sm text-gray-500 mt-1">Implement, validate effectiveness with data, and reiterate</p>
-                        </div>
+                                <div className="space-y-10">
+                  <div>
+                    <p className="text-6xl font-bold mb-2 tracking-tighter">94.2%</p>
+                    <p className="text-[11px] text-[#E9A68A] font-bold uppercase tracking-widest opacity-80">Somatic Safety Index</p>
+                  </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                    <div className="p-5 bg-white/5 rounded-3xl border border-white/5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Sun className="w-5 h-5 text-[#E9A68A]" />
+                        <span className="text-[10px] font-black text-white/40 uppercase">Circadian</span>
+                      </div>
+                      <p className="text-xl font-bold text-white">+22%</p>
                     </div>
+                    <div className="p-5 bg-white/5 rounded-3xl border border-white/5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Coffee className="w-5 h-5 text-[#E9A68A]" />
+                        <span className="text-[10px] font-black text-white/40 uppercase">Recovery</span>
+                      </div>
+                      <p className="text-xl font-bold text-white">68%</p>
+                    </div>
+                  </div>
                 </div>
-            </section>
-                <footer class="mt-12 text-center text-gray-400 text-sm">
-            <p>Thanks for reading and for considering my application for the Candidate Experience Associate role! </p>
-            <p> Designed and edited by <a href="https://www.linkedin.com/in/irenemutwiri/">Irene Mutwiri, M.Ed.</a> for ezCater. (Last Updated December 08, 2025)</p>
-         <style>
-a:link { color: blue; background-color: transparent; text-decoration: none; } a:visited { color: blue; background-color: transparent; text-decoration: none; } a:hover { color: red; background-color: transparent; text-decoration: underline; } a:active { color: yellow; background-color: transparent; text-decoration: underline; } </style>
+              </div>
+              <div className="relative z-10 pt-8 mt-8 border-t border-white/10 flex justify-between items-end">
+                <div className="flex flex-col">
+                  <p className="text-[10px] text-[#E9A68A] font-bold uppercase mb-1 tracking-widest">Status</p>
+                  <p className="text-xs font-bold text-white uppercase tracking-tighter italic">Signal Optimal</p>
+                </div>
+                <div className="w-2.5 h-2.5 rounded-full bg-[#E9A68A] animate-pulse shadow-[0_0_12px_#E9A68A]"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+        {/* FOOTER SECTION: ATTRIBUTION & DATE SELECTOR */}
+        <footer className="w-full mt-12">
+          <div className="p-12 bg-[#2D1B0D] rounded-[2.5rem] text-white text-center shadow-2xl relative overflow-hidden border border-[#E9A68A]/5">
+             <div className="relative z-10 flex flex-col items-center gap-4">
+               <div className="flex items-center gap-3 mb-2">
+                 <div className="h-[1px] w-8 bg-[#E9A68A]/40"></div>
+                 <p className="text-[10px] font-black text-[#E9A68A] uppercase tracking-[0.4em]">Designer Credit</p>
+                 <div className="h-[1px] w-8 bg-[#E9A68A]/40"></div>
+               </div>
+               <p className="text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto tracking-tight">
+                 "Designed by <span className="text-[#E9A68A] font-bold">Irene Mutwiri, M.Ed.</span> for <span className="text-[#E9A68A] font-bold">@WellbyCami</span>."
+               </p>
+             </div>
+             <div className="relative z-10 flex flex-col items-center gap-4 pt-10 mt-10 border-t border-white/5 w-full max-w-sm mx-auto">
+                <div className="flex items-center gap-2 text-[#E9A68A]">
+                  <Calendar className="w-4 h-4" />
+                  <label htmlFor="last-updated" className="text-[10px] font-black uppercase tracking-[0.2em]">Last updated on</label>
+                </div>
+                <input 
+                  id="last-updated"
+                  type="date" 
+                  value={lastUpdated}
+                  onChange={(e) => setLastUpdated(e.target.value)}
+                  className="bg-[#3D2614] text-white text-sm border border-[#E9A68A]/10 rounded-2xl px-6 py-3 focus:outline-none focus:ring-2 focus:ring-[#E9A68A] cursor-pointer w-full text-center transition-all hover:bg-[#4D311A]"
+                />
+             </div>
+                          <div className="absolute top-0 left-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -ml-32 -mt-32"></div>
+             <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -mr-32 -mb-32"></div>
+          </div>
         </footer>
-    <script>
-        // PDF GENERATION FUNCTION
-        async function generatePdf() {
-            const input = document.getElementById('infographic-content');
-            const pdfButton = document.getElementById('pdf-download-button');
-            const header = document.getElementById('app-header');
-                        // 1. Temporarily hide elements that shouldn't be in the PDF
-            pdfButton.style.display = 'none';
-            header.classList.remove('sticky-header'); // Remove sticky position for clean capture
-            header.style.position = 'static'; 
-            try {
-                // 2. Generate Canvas from HTML content
-                const canvas = await html2canvas(input, {
-                    scale: 2, // Higher scale for better resolution
-                    logging: false,
-                    useCORS: true
-                });
-                const imgData = canvas.toDataURL('image/jpeg', 0.9);
-                const { jsPDF } = window.jspdf;
-                                // A4 dimensions in mm
-                const pdfWidth = 210; 
-                const pdfHeight = 297; 
-                                // Content size calculations
-                const imgWidth = canvas.width;
-                const imgHeight = canvas.height;
-                const ratio = imgHeight / imgWidth;
-                                // Calculate the dimensions of the content image inside the PDF (10mm margins)
-                const contentWidth = pdfWidth - 20; 
-                const contentHeight = contentWidth * ratio;
-                const doc = new jsPDF('p', 'mm', 'a4');
-                let currentPagePosition = 0;
-                                // 3. Multi-page slicing logic for long infographics
-                const pageHeight = pdfHeight - 20; // Effective page height with margins
-                if (contentHeight > pageHeight) {
-                    let pageNumber = 1;
-                                        while (currentPagePosition < contentHeight) {
-                        if (pageNumber > 1) {
-                            doc.addPage();
-                        }
-                                                // Add the image slice to the PDF
-                        // The third argument (y-position on PDF) is fixed at 10 (top margin)
-                        // The fourth argument (-currentPagePosition) controls the vertical offset of the image inside the PDF
-                        doc.addImage(imgData, 'JPEG', 10, 10 - currentPagePosition, contentWidth, contentHeight);
-                        currentPagePosition += pageHeight;
-                        pageNumber++;
-                    }
-                } else {
-                    // Single page content fits well
-                    doc.addImage(imgData, 'JPEG', 10, 10, contentWidth, contentHeight);
-                }
-                doc.save('Irene Mutwiri, M.Ed. | Candidate Experience Associate (CoverLetter).pdf');
-            } catch (error) {
-                console.error("PDF generation failed:", error);
-                // Use a custom modal or alert fallback if absolutely necessary, but prefer console logging
-                console.log("PDF generation failed. Check console for error details."); 
-            } finally {
-                // 4. Restore elements to their original state
-                pdfButton.style.display = 'block';
-                header.classList.add('sticky-header');
-                header.style.position = 'sticky'; 
-            }
-        }
-        // CHART CONFIGURATION (Remains the same)
-        function splitLabel(label, maxLength) {
-            if (label.length <= maxLength) return label;
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = words[0];
-            for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + 1 + words[i].length <= maxLength) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
-            }
-            lines.push(currentLine);
-            return lines;
-        }
-        const sharedTooltipConfig = {
-            callbacks: {
-                title: function(tooltipItems) {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    if (Array.isArray(label)) {
-                        return label.join(' ');
-                    } else {
-                        return label;
-                    }
-                }
-            }
-        };
-        // --- Chart 1: Interview Sentiment (Data-Grounded) ---
-        const ctxSentiment = document.getElementById('sentimentChart').getContext('2d');
-                const sentimentLabels = ['Positive (53%)', 'Neutral (15%)', 'Negative (32%)'];
-        const processedSentimentLabels = sentimentLabels.map(l => splitLabel(l, 16));
-        new Chart(ctxSentiment, {
-            type: 'doughnut',
-            data: {
-                labels: processedSentimentLabels,
-                datasets: [{
-                    data: [53, 15, 32],
-                    backgroundColor: [
-                        '#10B981', // Green for Positive
-                        '#FCD34D', // Yellow for Neutral
-                        '#F87171'  // Red for Negative
-                    ],
-                    borderWidth: 0,
-                    hoverOffset: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' },
-                    tooltip: sharedTooltipConfig
-                },
-                cutout: '70%'
-            }
-        });
-        // --- Chart 2: Application Channels (Data-Grounded) ---
-        const ctxChannels = document.getElementById('channelsChart').getContext('2d');
-                // REFORMATTED LABELS: Shortened long channel names to prevent awkward line breaks/overlap
-        const channelLabels = ['Online (81%)', 'Recruiter (10%)', 'Referral (6%)', 'Other (3%)'];
-        const processedChannelLabels = channelLabels.map(l => splitLabel(l, 16));
-        new Chart(ctxChannels, {
-            type: 'doughnut',
-            data: {
-                labels: processedChannelLabels,
-                datasets: [{
-                    data: [81, 10, 6, 3],
-                    backgroundColor: [
-                        '#F97316', // Orange 500 (Applied Online)
-                        '#2563EB', // Blue 600 (Recruiter)
-                        '#06B6D4', // Cyan 500 (Referral)
-                        '#94a3b8'  // Slate 400 (Other)
-                    ],
-                    borderWidth: 0,
-                    hoverOffset: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' },
-                    tooltip: sharedTooltipConfig
-                },
-                cutout: '70%'
-            }
-        });
-    </script>
+      </main>
+    </div>
+  );
+};
+
+export default App;
