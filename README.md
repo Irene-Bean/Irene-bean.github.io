@@ -1,9 +1,3 @@
-import React, { useState } from 'react';
-import { 
-  Brain, Zap, HeartPulse, Activity, Coffee, Moon, Sun, RefreshCw,
-  ArrowRight, Sparkles, ShieldCheck, Calendar
-} from 'lucide-react';
-
 const App = () => {
   const [selectedNode, setSelectedNode] = useState(null);
   const [lastUpdated, setLastUpdated] = useState("2024-05-20");
