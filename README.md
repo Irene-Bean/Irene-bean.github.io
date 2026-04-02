@@ -195,13 +195,13 @@
                 <div class="relative z-10 flex flex-col items-center gap-6">
                     <div class="flex items-center gap-4">
                         <div class="h-[1px] w-12 bg-[#E9A68A]/30"></div>
-                        <p class="text-[10px] font-black terracotta-text uppercase tracking-[0.5em]">Strategic Model</p>
+                        <p class="text-[10px] font-black terracotta-text uppercase tracking-[0.5em]">Social Media Strategy Presentation</p>
                         <div class="h-[1px] w-12 bg-[#E9A68A]/30"></div>
                     </div>
                     <p class="text-2xl md:text-3xl font-medium leading-tight max-w-3xl mx-auto tracking-tight">
                         Designed by <span class="terracotta-text font-bold">Irene Mutwiri, M.Ed.</span> for <span class="terracotta-text font-bold">Estoril Office Center</span>.
                     </p>
-                    <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">2025 Lead Generation Framework</p>
+                    <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Last Updated April 02, 2026</p>
                 </div>
                 <div class="absolute top-0 left-0 w-80 h-80 bg-[#E9A68A]/5 rounded-full blur-[100px] -ml-40 -mt-40"></div>
                 <div class="absolute bottom-0 right-0 w-80 h-80 bg-[#E9A68A]/5 rounded-full blur-[100px] -mr-40 -mb-40"></div>
