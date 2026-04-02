@@ -277,7 +277,7 @@
             radarChart = new Chart(radarCtx, {
                 type: 'radar',
                 data: {
-                    labels: ['B2B Authority', 'Emotional Connection', 'Lead Quality', 'Visual Appeal', 'Logic/Data', 'Event Promo'],
+                    labels: ['B2B Authority', 'Emotional Connection', 'Lead Quality', 'Visual Appeal', 'Logic/Data', 'Events'],
                     datasets: [{
                         label: 'LinkedIn Intent',
                         data: chartData.linkedin.radar,
