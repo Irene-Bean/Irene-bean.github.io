@@ -214,12 +214,12 @@
         const chartData = {
             linkedin: {
                 radar: [95, 30, 90, 40, 95, 80],
-                desc: 'LinkedIn dominates logic-driven authority and B2B intent.',
+                desc: 'LinkedIn accounts for 80% of all B2B social media leads.',
                 projection: [20, 28, 45, 70, 88, 94, 96, 97, 98, 98, 98, 99]
             },
             instagram: {
                 radar: [35, 95, 60, 98, 30, 70],
-                desc: 'Instagram builds brand aesthetic and emotional relatability.',
+                desc: 'Video is 20x more likely to be shared on social platforms.',
                 projection: [20, 35, 55, 75, 85, 90, 92, 93, 93, 94, 94, 95]
             },
             blended: {
