@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NSQ Positioning Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,268 +19,346 @@
         .terracotta-bg { background-color: #E9A68A; }
         .terracotta-text { color: #E9A68A; }
         .terracotta-border { border-color: #E9A68A; }
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
+        /* Strategy Card Interactions */
+        .strategy-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            position: relative;
+            background-color: white;
+            border-width: 2px;
+            border-color: rgba(233, 166, 138, 0.2);
         }
-        .pulse-shadow {
-            box-shadow: 0 0 12px #E9A68A;
+        .strategy-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 30px -10px rgba(45, 27, 13, 0.15), 0 15px 15px -10px rgba(45, 27, 13, 0.05);
+        }
+        /* Active State: Thicker peach border and soft glow */
+        .strategy-card.active {
+            border-width: 4px;
+            border-color: #E9A68A;
+            box-shadow: 0 0 25px rgba(233, 166, 138, 0.5);
+            z-index: 10;
+        }
+        /* Select Label Animation */
+        .select-label {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .strategy-card:hover .select-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        canvas {
+            max-width: 100%;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E9A68A;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="pt-8 pb-20">
-    <main class="max-w-6xl mx-auto p-6 space-y-8">
-        <!-- HERO SECTION: ADAPTIVE DECISION TREE -->
-        <section class="bg-white rounded-[2rem] shadow-sm border border-[#E9A68A]/10 overflow-hidden">
-            <div class="cocoa-bg p-10 text-center relative">
-                <div class="absolute top-6 left-6 opacity-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.54-2.44 2.5 2.5 0 0 1-2.5-2.5V4.5A2.5 2.5 0 0 1 4.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.54-2.44 2.5 2.5 0 0 0 2.5-2.5V4.5A2.5 2.5 0 0 0 19.5 2z"/></svg>
-                </div>
-                <h2 class="text-white text-3xl font-bold mb-3 tracking-tight"> Hi Cami, Irene here!</h2>
-                <p class="terracotta-text text-sm max-w-lg mx-auto font-medium opacity-90">
-                    I’ve put together this proof-of-concept dashboard to help you brainstorm intentional content for nervous system regulation.
-                </p>
+<body class="pt-12 pb-20 px-4">
+    <main class="max-w-6xl mx-auto space-y-10">
+        <!-- HEADER SECTION -->
+        <header class="bg-[#2D1B0D] rounded-[2.5rem] p-10 md:p-14 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute top-6 left-6 opacity-20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#E9A68A"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </div>
-            <div class="p-10" id="assessment-container">
-                <!-- Assessment View (Default) -->
-                <div id="view-selector" class="fade-in">
-                    <h3 class="text-center font-bold text-[#2D1B0D] mb-10 text-xl">
-                        What state of regulation would you like to focus on today?
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <button onclick="showResult('sympathetic')" class="p-8 text-center border-2 border-[#E9A68A]/30 rounded-3xl transition-all hover:scale-[1.02] hover:border-[#E9A68A] flex flex-col items-center group bg-[#FDF8F5]">
-                            <div class="bg-white p-3 rounded-full mb-4 shadow-sm group-hover:shadow-md transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                            </div>
-                            <span class="font-bold text-lg mb-2">Activated</span>
-                            <span class="text-xs opacity-70 leading-relaxed font-medium">Frantic, hyper-focused, anxious, or overwhelmed</span>
-                            <div class="mt-6 flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity terracotta-text">
-                                Select <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                            </div>
-                        </button>
-                        <button onclick="showResult('dorsal')" class="p-8 text-center border-2 border-[#E9A68A]/30 rounded-3xl transition-all hover:scale-[1.02] hover:border-[#E9A68A] flex flex-col items-center group bg-[#FDF8F5]">
-                            <div class="bg-white p-3 rounded-full mb-4 shadow-sm group-hover:shadow-md transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-                            </div>
-                            <span class="font-bold text-lg mb-2">Shutdown</span>
-                            <span class="text-xs opacity-70 leading-relaxed font-medium">Frozen, numb, procrastinating, or dissociated</span>
-                            <div class="mt-6 flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity terracotta-text">
-                                Select <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                            </div>
-                        </button>
-                        <button onclick="showResult('ventral')" class="p-8 text-center border-2 border-[#E9A68A]/30 rounded-3xl transition-all hover:scale-[1.02] hover:border-[#E9A68A] flex flex-col items-center group bg-[#FDF8F5]">
-                            <div class="bg-white p-3 rounded-full mb-4 shadow-sm group-hover:shadow-md transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                            </div>
-                            <span class="font-bold text-lg mb-2">Social Safety</span>
-                            <span class="text-xs opacity-70 leading-relaxed font-medium">Regulated, creative, connected, and curious</span>
-                            <div class="mt-6 flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity terracotta-text">
-                                Select <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                            </div>
-                        </button>
+            <h1 class="text-[#E9A68A] text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Hi Cami, Irene here!</h1>
+            <p class="text-white/80 text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+                Here is a presentation on social media strategy for growing your coworking community.
+            </p>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-[#E9A68A]/10 rounded-full blur-[80px] -mr-32 -mb-32"></div>
+        </header>
+        <!-- STRATEGY SELECTOR SECTION -->
+        <section class="space-y-8">
+            <h2 class="text-center font-bold text-[#2D1B0D] text-2xl tracking-tight">Which platform strategy would you like to focus on?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- LinkedIn Tile -->
+                <div id="btn-linkedin" onclick="setActiveStrategy('linkedin')" class="strategy-card active p-8 rounded-[2rem] flex flex-col items-center text-center">
+                    <div class="bg-[#FDF8F5] p-4 rounded-full mb-6 terracotta-text shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                     </div>
+                    <h3 class="font-bold text-xl mb-3">LinkedIn Focus</h3>
+                    <p class="text-sm opacity-60 font-medium leading-relaxed mb-6">High value corporate networking for private office suites.</p>
+                    <span class="select-label text-[10px] font-black uppercase tracking-[0.2em] terracotta-text mt-auto">Select Strategy</span>
                 </div>
-                <!-- Results View (Hidden by default) -->
-                <div id="view-result" class="hidden fade-in">
-                    <div class="flex flex-col md:flex-row items-center justify-between mb-8 pb-6 border-b border-[#E9A68A]/10 gap-4">
-                        <button onclick="resetAssessment()" class="group flex items-center gap-2 text-[#2D1B0D] font-bold text-xs uppercase tracking-widest">
-                            <div class="bg-[#E9A68A]/10 p-2 rounded-full group-hover:bg-[#E9A68A]/20 transition-colors">
-                                <svg id="sync-icon-small" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
-                            </div>
-                            Restart Assessment
-                        </button>
-                        <div class="flex items-center gap-3">
-                            <span class="text-[10px] text-[#2D1B0D]/40 font-bold uppercase tracking-widest">Protocol</span>
-                            <div id="result-badge" class="px-5 py-2 terracotta-bg text-white text-[10px] font-black rounded-full uppercase tracking-[0.2em] shadow-lg shadow-[#E9A68A]/20">
-                                STRATEGY
-                            </div>
-                        </div>
+                <!-- Instagram Tile -->
+                <div id="btn-instagram" onclick="setActiveStrategy('instagram')" class="strategy-card p-8 rounded-[2rem] flex flex-col items-center text-center">
+                    <div class="bg-[#FDF8F5] p-4 rounded-full mb-6 terracotta-text shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </div>
-                    <div class="w-full">
-                        <div class="cocoa-bg rounded-[2rem] p-10 text-white shadow-2xl relative overflow-hidden">
-                            <div class="relative z-10">
-                                <div class="flex items-center gap-2 terracotta-text text-[10px] font-black uppercase tracking-[0.3em] mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg> 
-                                    Recommended Protocol
-                                </div>
-                                <h4 id="result-title" class="text-4xl font-bold mb-8 tracking-tight">Strategy Title</h4>
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                                    <div class="space-y-4">
-                                        <p class="terracotta-text text-[10px] font-black uppercase tracking-widest mb-4 border-l-2 terracotta-border pl-3">Strategic Tactics</p>
-                                        <div id="result-tactics" class="grid grid-cols-1 gap-3">
-                                            <!-- Tactics injected here -->
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col justify-center">
-                                        <div class="bg-[#E9A68A]/10 p-8 rounded-3xl border border-[#E9A68A]/20 text-center">
-                                            <p class="text-[10px] terracotta-text font-bold uppercase mb-3 tracking-widest">Projected Outcome</p>
-                                            <p id="result-impact" class="text-xl font-medium leading-relaxed italic text-white/90">"Impact statement"</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute top-0 right-0 w-80 h-80 bg-[#E9A68A]/5 rounded-full blur-[100px] -mr-32 -mt-32"></div>
-                        </div>
+                    <h3 class="font-bold text-xl mb-3">Instagram Focus</h3>
+                    <p class="text-sm opacity-60 font-medium leading-relaxed mb-6">Visual storytelling focused on lifestyle and community desks.</p>
+                    <span class="select-label text-[10px] font-black uppercase tracking-[0.2em] terracotta-text mt-auto">Select Strategy</span>
+                </div>
+                <!-- Blended Tile -->
+                <div id="btn-blended" onclick="setActiveStrategy('blended')" class="strategy-card p-8 rounded-[2rem] flex flex-col items-center text-center">
+                    <div class="bg-[#FDF8F5] p-4 rounded-full mb-6 terracotta-text shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
+                    <h3 class="font-bold text-xl mb-3">Blended Scale</h3>
+                    <p class="text-sm opacity-60 font-medium leading-relaxed mb-6">Omnichannel market dominance for sustainable full occupancy.</p>
+                    <span class="select-label text-[10px] font-black uppercase tracking-[0.2em] terracotta-text mt-auto">Select Strategy</span>
                 </div>
             </div>
         </section>
-        <!-- MIDDLE SECTION: PULSE & ANCHORS -->
+        <!-- ANALYTICS SECTION -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7">
-                <div class="bg-white p-10 rounded-[2rem] border border-[#E9A68A]/10 shadow-sm h-full">
-                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2 text-[#2D1B0D]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
-                        Strategic Anchors
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-6 bg-[#FDF8F5] rounded-3xl border border-[#E9A68A]/5">
-                            <p class="text-[10px] font-black terracotta-text uppercase mb-3 tracking-widest">Rest Ethic</p>
-                            <p class="text-sm text-[#2D1B0D]/70 font-medium leading-relaxed">Reframing rest as a performance prerequisite for creatives rather than a reward.</p>
+            <!-- Radar Chart (Intent Mapping) -->
+            <div class="lg:col-span-5">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-[#E9A68A]/10 shadow-sm h-full flex flex-col">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-[#2D1B0D]">Intent Mapping</h3>
+                        <p id="radar-description" class="text-sm text-[#2D1B0D]/50 font-medium mt-1">LinkedIn dominates logic-driven authority and B2B intent.</p>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center min-h-[350px]">
+                        <canvas id="intentRadar"></canvas>
+                    </div>
+                    <div class="mt-8 flex justify-center gap-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#2D1B0D]"></div>
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">LinkedIn</span>
                         </div>
-                        <div class="p-6 bg-[#FDF8F5] rounded-3xl border border-[#E9A68A]/5">
-                            <p class="text-[10px] font-black terracotta-text uppercase mb-3 tracking-widest">Temporal Opt.</p>
-                            <p class="text-sm text-[#2D1B0D]/70 font-medium leading-relaxed">Aligning output with ultradian cycles (90-min blocks) and biological rhythms.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#E9A68A]"></div>
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Instagram</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <aside class="lg:col-span-5">
-                <div class="cocoa-bg rounded-[2rem] p-10 text-white relative overflow-hidden shadow-xl h-full flex flex-col justify-between">
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-10">
-                            <h3 class="text-[10px] font-black uppercase tracking-[0.3em] terracotta-text">System Pulse</h3>
-                            <button onclick="triggerSync()" class="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
-                                <svg id="sync-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
-                            </button>
-                        </div>
-                        <div class="space-y-10">
-                            <div>
-                                <p class="text-6xl font-bold mb-2 tracking-tighter">94.2%</p>
-                                <p class="text-[11px] terracotta-text font-bold uppercase tracking-widest opacity-80">Somatic Safety Index</p>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="p-5 bg-white/5 rounded-3xl border border-white/5">
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-                                        <span class="text-[10px] font-black text-white/40 uppercase">Circadian</span>
-                                    </div>
-                                    <p class="text-xl font-bold text-white">+22%</p>
-                                </div>
-                                <div class="p-5 bg-white/5 rounded-3xl border border-white/5">
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-                                        <span class="text-[10px] font-black text-white/40 uppercase">Recovery</span>
-                                    </div>
-                                    <p class="text-xl font-bold text-white">68%</p>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Line Chart (Projection) -->
+            <div class="lg:col-span-7">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-[#E9A68A]/10 shadow-sm h-full flex flex-col">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-[#2D1B0D]">12-Month Occupancy Projection</h3>
+                        <p class="text-sm text-[#2D1B0D]/50 font-medium mt-1">Proactive targeting ensures high capacity by month 6.</p>
                     </div>
-                    <div class="relative z-10 pt-8 mt-8 border-t border-white/10 flex justify-between items-end">
-                        <div class="flex flex-col">
-                            <p class="text-[10px] terracotta-text font-bold uppercase mb-1 tracking-widest">Status</p>
-                            <p class="text-xs font-bold text-white uppercase tracking-tighter italic">Signal Optimal</p>
+                    <div class="flex-grow min-h-[350px]">
+                        <canvas id="occupancyLine"></canvas>
+                    </div>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-[#FDF8F5] border border-[#E9A68A]/10">
+                            <p class="text-[10px] font-black terracotta-text uppercase tracking-widest mb-1">Social Lead Strategy</p>
+                            <p class="text-xs opacity-60 leading-tight">Optimized growth based on active strategy selection.</p>
                         </div>
-                        <div class="w-2.5 h-2.5 rounded-full terracotta-bg animate-pulse pulse-shadow"></div>
+                        <div class="p-4 rounded-2xl bg-[#FDF8F5] border border-[#2D1B0D]/5">
+                            <p class="text-[10px] font-black text-[#2D1B0D] uppercase tracking-widest mb-1">Baseline Growth</p>
+                            <p class="text-xs opacity-60 leading-tight">Generic referral based growth peaks at ~60%.</p>
+                        </div>
                     </div>
                 </div>
-            </aside>
+            </div>
         </div>
-        <!-- FOOTER SECTION: ATTRIBUTION & DATE SELECTOR -->
+        <!-- BENCHMARK GRID -->
+        <section class="bg-white p-12 rounded-[2.5rem] border border-[#E9A68A]/10 shadow-sm">
+            <h3 class="text-xl font-bold mb-10 flex items-center gap-3 text-[#2D1B0D]">
+                <div class="p-2 bg-[#FDF8F5] rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                </div>
+                Channel Efficiency Benchmarks
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <!-- Avg Conversion Rate -->
+                <div class="group">
+                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Avg Conversion Rate</p>
+                    <p class="text-4xl font-extrabold tracking-tighter">3.0%</p>
+                    <div class="h-1 w-12 bg-[#E9A68A]/20 mt-4 group-hover:w-full transition-all duration-500"></div>
+                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Visitor to Lead Stage</p>
+                </div>
+                <!-- Revenue per SQ Meter -->
+                <div class="group">
+                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Avg Revenue / m² (Lisbon)</p>
+                    <p class="text-4xl font-extrabold tracking-tighter">€35.00</p>
+                    <div class="h-1 w-12 bg-[#E9A68A]/20 mt-4 group-hover:w-full transition-all duration-500"></div>
+                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Regional Industry Avg</p>
+                </div>
+                <!-- Potential ROI Factor -->
+                <div class="group">
+                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Potential ROI Factor</p>
+                    <p class="text-4xl font-extrabold tracking-tighter">4.2x</p>
+                    <div class="h-1 w-12 bg-[#E9A68A]/20 mt-4 group-hover:w-full transition-all duration-500"></div>
+                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Target LTV:CAC Multiplier</p>
+                </div>
+            </div>
+        </section>
+        <!-- FOOTER SECTION -->
         <footer class="w-full mt-12">
-            <div class="p-12 cocoa-bg rounded-[2.5rem] text-white text-center shadow-2xl relative overflow-hidden border border-[#E9A68A]/5">
-                <div class="relative z-10 flex flex-col items-center gap-4">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="h-[1px] w-8 bg-[#E9A68A]/40"></div>
-                        <p class="text-[10px] font-black terracotta-text uppercase tracking-[0.4em]">Credit</p>
-                        <div class="h-[1px] w-8 bg-[#E9A68A]/40"></div>
+            <div class="p-14 cocoa-bg rounded-[3rem] text-white text-center shadow-2xl relative overflow-hidden border border-[#E9A68A]/5">
+                <div class="relative z-10 flex flex-col items-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="h-[1px] w-12 bg-[#E9A68A]/30"></div>
+                        <p class="text-[10px] font-black terracotta-text uppercase tracking-[0.5em]">Strategic Model</p>
+                        <div class="h-[1px] w-12 bg-[#E9A68A]/30"></div>
                     </div>
-                    <p class="text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto tracking-tight">
-                        "Designed by <span class="terracotta-text font-bold"><a href="https://www.irenemutwiri.com/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold"><a href="https://www.wellbycami.com/">@WellbyCami</a></span>.
+                    <p class="text-2xl md:text-3xl font-medium leading-tight max-w-3xl mx-auto tracking-tight">
+                        Designed by <span class="terracotta-text font-bold">Irene Mutwiri, M.Ed.</span> for <span class="terracotta-text font-bold">Estoril Office Center</span>.
                     </p>
+                    <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">2025 Lead Generation Framework</p>
                 </div>
-                <div class="relative z-10 flex flex-col items-center gap-4 pt-10 mt-10 border-t border-white/5 w-full max-w-sm mx-auto">
-                    <div class="flex items-center gap-2 terracotta-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        <label for="last-updated" class="text-[10px] font-black uppercase tracking-[0.2em]">Last updated on</label>
-                    </div>
-                    <input 
-                        id="last-updated"
-                        type="date" 
-                        value="2026-03-07"
-                        class="bg-[#3D2614] text-white text-sm border border-[#E9A68A]/10 rounded-2xl px-6 py-3 focus:outline-none focus:ring-2 focus:ring-[#E9A68A] cursor-pointer w-full text-center transition-all hover:bg-[#4D311A]"
-                    />
-                </div>
-                <div class="absolute top-0 left-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -ml-32 -mt-32"></div>
-                <div class="absolute bottom-0 right-0 w-64 h-64 bg-[#E9A68A]/5 rounded-full blur-[80px] -mr-32 -mb-32"></div>
+                <div class="absolute top-0 left-0 w-80 h-80 bg-[#E9A68A]/5 rounded-full blur-[100px] -ml-40 -mt-40"></div>
+                <div class="absolute bottom-0 right-0 w-80 h-80 bg-[#E9A68A]/5 rounded-full blur-[100px] -mr-40 -mb-40"></div>
             </div>
         </footer>
     </main>
     <script>
-        const results = {
-            sympathetic: {
-                title: "The 'Settle' Strategy",
-                focus: "Down-Regulation & Sensory Softness",
-                tactics: ["Low-contrast visuals", "Ambient audio loops", "Single-choice carousels", "Short, calming breathwork cues"],
-                impact: "Reduces Decision Fatigue & Adrenaline Spikes"
+        let radarChart, lineChart;
+        // Data Repository for specific strategies
+        const chartData = {
+            linkedin: {
+                radar: [95, 30, 90, 40, 95, 80],
+                desc: 'LinkedIn dominates logic-driven authority and B2B intent.',
+                projection: [20, 28, 45, 70, 88, 94, 96, 97, 98, 98, 98, 99]
             },
-            dorsal: {
-                title: "The 'Gentle Spark' Strategy",
-                focus: "Safe Mobilization",
-                tactics: ["High-contrast 'Waking' cues", "Micro-wins (15-30s videos)", "Physical movement prompts", "Bright, warm lighting visuals"],
-                impact: "Combats Dissociation & Functional Freeze"
+            instagram: {
+                radar: [35, 95, 60, 98, 30, 70],
+                desc: 'Instagram builds brand aesthetic and emotional relatability.',
+                projection: [20, 35, 55, 75, 85, 90, 92, 93, 93, 94, 94, 95]
             },
-            ventral: {
-                title: "The 'Deep Flow' Strategy",
-                focus: "Collaborative Mastery",
-                tactics: ["Long-form immersive content", "Interactive community builds", "90-min co-working", "Non-linear problem solving prompts"],
-                impact: "Maximizes Creative ROI & Community Bond"
+            blended: {
+                radar: [85, 85, 95, 85, 90, 95],
+                desc: 'Blended scale balances professional logic with social "vibe".',
+                projection: [20, 40, 65, 85, 92, 95, 97, 98, 98, 99, 99, 100]
             }
         };
-        function showResult(key) {
-            const data = results[key];
-            const selector = document.getElementById('view-selector');
-            const result = document.getElementById('view-result');
-            // Set content
-            document.getElementById('result-badge').innerText = `${key.toUpperCase()} STRATEGY`;
-            document.getElementById('result-title').innerText = data.title;
-            document.getElementById('result-impact').innerText = `"${data.impact}"`;
-            const tacticsContainer = document.getElementById('result-tactics');
-            tacticsContainer.innerHTML = '';
-            data.tactics.forEach(tactic => {
-                const div = document.createElement('div');
-                div.className = 'flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors';
-                div.innerHTML = `
-                    <div class="w-1.5 h-1.5 terracotta-bg rounded-full shrink-0 shadow-[0_0_8px_#E9A68A]"></div>
-                    <span class="text-sm font-medium tracking-wide">${tactic}</span>
-                `;
-                tacticsContainer.appendChild(div);
+        /**
+         * Sets the active visual state for the tiles and triggers chart updates
+         */
+        function setActiveStrategy(id) {
+            // Update UI Card States
+            document.querySelectorAll('.strategy-card').forEach(card => card.classList.remove('active'));
+            document.getElementById(`btn-${id}`).classList.add('active');
+            // Trigger Chart Updates with animation
+            updateCharts(id);
+            // Update Narrative text
+            document.getElementById('radar-description').innerText = chartData[id].desc;
+        }
+        /**
+         * Redraws chart data based on selected strategy
+         */
+        function updateCharts(id) {
+            const data = chartData[id];
+            // Update Radar Chart logic
+            radarChart.data.datasets[0].data = data.radar;
+            // Manage Visibility for Radar Comparison
+            if(id === 'linkedin') {
+                radarChart.data.datasets[0].hidden = false;
+                radarChart.data.datasets[1].hidden = true;
+            } else if(id === 'instagram') {
+                radarChart.data.datasets[0].hidden = true;
+                radarChart.data.datasets[1].hidden = false;
+            } else {
+                radarChart.data.datasets[0].hidden = false;
+                radarChart.data.datasets[1].hidden = false;
+                // For blended, we set the second dataset to a default Instagram state for contrast
+                radarChart.data.datasets[1].data = chartData.instagram.radar;
+            }
+            radarChart.update();
+            // Update Occupancy Projection
+            lineChart.data.datasets[0].data = data.projection;
+            lineChart.update();
+        }
+        /**
+         * Initial Chart Setup
+         */
+        function initCharts() {
+            // Global Chart Defaults
+            Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+            Chart.defaults.color = "#2D1B0D";
+            // Initialize Radar Chart
+            const radarCtx = document.getElementById('intentRadar').getContext('2d');
+            radarChart = new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['B2B Authority', 'Emotional Connection', 'Lead Quality', 'Visual Appeal', 'Logic/Data', 'Direct Response'],
+                    datasets: [{
+                        label: 'LinkedIn Intent',
+                        data: chartData.linkedin.radar,
+                        fill: true,
+                        backgroundColor: 'rgba(45, 27, 13, 0.1)',
+                        borderColor: '#2D1B0D',
+                        pointBackgroundColor: '#2D1B0D',
+                        borderWidth: 2
+                    }, {
+                        label: 'Instagram Brand',
+                        data: chartData.instagram.radar,
+                        fill: true,
+                        backgroundColor: 'rgba(233, 166, 138, 0.2)',
+                        borderColor: '#E9A68A',
+                        pointBackgroundColor: '#E9A68A',
+                        borderWidth: 2,
+                        hidden: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        r: { 
+                            min: 0, max: 100, 
+                            ticks: { display: false }, 
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            pointLabels: { font: { size: 10, weight: 'bold' } }
+                        } 
+                    }
+                }
             });
-            // Transition
-            selector.classList.add('hidden');
-            result.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Initialize Occupancy Line Chart
+            const lineCtx = document.getElementById('occupancyLine').getContext('2d');
+            lineChart = new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'],
+                    datasets: [{
+                        label: 'Active Strategy',
+                        data: chartData.linkedin.projection,
+                        borderColor: '#E9A68A',
+                        backgroundColor: '#E9A68A',
+                        tension: 0.4,
+                        borderWidth: 4,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#FFF',
+                        pointBorderWidth: 2
+                    }, {
+                        label: 'Baseline Growth',
+                        data: [20, 22, 28, 35, 42, 48, 52, 55, 58, 60, 61, 62],
+                        borderColor: '#2D1B0D',
+                        borderDash: [8, 4],
+                        tension: 0.4,
+                        pointRadius: 0,
+                        borderWidth: 2,
+                        opacity: 0.2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        y: { 
+                            beginAtZero: true, 
+                            max: 100, 
+                            grid: { color: 'rgba(0,0,0,0.03)' }, 
+                            ticks: { callback: v => v + '%' } 
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
         }
-        function resetAssessment() {
-            document.getElementById('view-selector').classList.remove('hidden');
-            document.getElementById('view-result').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        function triggerSync() {
-            const icon = document.getElementById('sync-icon');
-            icon.classList.add('animate-spin');
-            setTimeout(() => {
-                icon.classList.remove('animate-spin');
-            }, 1200);
-        }
+        // Wait for page load
+        window.onload = initCharts;
     </script>
 </body>
+</html>
+</html>
 </html>
