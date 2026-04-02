@@ -171,21 +171,21 @@
                     <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Avg Conversion Rate</p>
                     <p class="text-4xl font-extrabold tracking-tighter">3.0%</p>
                     <div class="h-1 w-12 bg-[#E9A68A]/20 mt-4 group-hover:w-full transition-all duration-500"></div>
-                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Visitor to Lead Stage</p>
+                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Social Media Visitor to Lead</p>
                 </div>
                 <!-- Revenue per SQ Meter -->
                 <div class="group">
-                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Avg Revenue / m² (Lisbon)</p>
+                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Avg Revenue / m²</p>
                     <p class="text-4xl font-extrabold tracking-tighter">€35.00</p>
                     <div class="h-1 w-12 bg-[#E9A68A]/20 mt-4 group-hover:w-full transition-all duration-500"></div>
-                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Regional Industry Avg</p>
+                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Lisbon Industry Avg</p>
                 </div>
                 <!-- Potential ROI Factor -->
                 <div class="group">
-                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Potential ROI Factor</p>
-                    <p class="text-4xl font-extrabold tracking-tighter">4.2x</p>
+                    <p class="text-[10px] font-black terracotta-text uppercase mb-2 tracking-widest">Potential ROI</p>
+                    <p class="text-4xl font-extrabold tracking-tighter">2.2x</p>
                     <div class="h-1 w-12 bg-[#E9A68A]/20 mt-4 group-hover:w-full transition-all duration-500"></div>
-                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Target LTV:CAC Multiplier</p>
+                    <p class="text-[10px] opacity-40 font-bold uppercase mt-4">Depending on LTV:CAC</p>
                 </div>
             </div>
         </section>
