@@ -147,7 +147,7 @@
                     <div class="mt-8 grid grid-cols-2 gap-4">
                         <div class="p-4 rounded-2xl bg-[#FDF8F5] border border-[#E9A68A]/10">
                             <p class="text-[10px] font-black terracotta-text uppercase tracking-widest mb-1">Social Lead Strategy</p>
-                            <p class="text-xs opacity-60 leading-tight">Optimized growth based on active strategy selection.</p>
+                            <p class="text-xs opacity-60 leading-tight">Potential growth based on social media strategy.</p>
                         </div>
                         <div class="p-4 rounded-2xl bg-[#FDF8F5] border border-[#2D1B0D]/5">
                             <p class="text-[10px] font-black text-[#2D1B0D] uppercase tracking-widest mb-1">Baseline Growth</p>
