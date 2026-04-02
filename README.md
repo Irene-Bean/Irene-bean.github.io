@@ -79,7 +79,7 @@
         </header>
         <!-- STRATEGY SELECTOR SECTION -->
         <section class="space-y-8">
-            <h2 class="text-center font-bold text-[#2D1B0D] text-2xl tracking-tight">Which platform strategy would you like to focus on?</h2>
+            <h2 class="text-center font-bold text-[#2D1B0D] text-2xl tracking-tight">Which platform strategy would you like to focus on? (Click below)</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- LinkedIn Tile -->
                 <div id="btn-linkedin" onclick="setActiveStrategy('linkedin')" class="strategy-card active p-8 rounded-[2rem] flex flex-col items-center text-center">
