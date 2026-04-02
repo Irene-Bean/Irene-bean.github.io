@@ -199,7 +199,7 @@
                         <div class="h-[1px] w-12 bg-[#E9A68A]/30"></div>
                     </div>
                     <p class="text-2xl md:text-3xl font-medium leading-tight max-w-3xl mx-auto tracking-tight">
-                        Designed by <span class="terracotta-text font-bold">Irene Mutwiri, M.Ed.</span> for <span class="terracotta-text font-bold">Estoril Office Center</span>.
+                        Designed by <span class="terracotta-text font-bold"><a href="https://www.irenemutwiri.com/">Irene Mutwiri, M.Ed.</a></span> for <span class="terracotta-text font-bold">Estoril Office Center</span>.
                     </p>
                     <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Last Updated April 02, 2026</p>
                 </div>
