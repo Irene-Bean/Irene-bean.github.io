@@ -73,7 +73,7 @@
             </div>
             <h1 class="text-[#E9A68A] text-4xl md:text-5xl font-extrabold mb-4 tracking-tight"><span class="terracotta-text font-bold">Ola Madalena e Catarina!</span></h1>
             <p class="text-white/80 text-lg max-w-2xl mx-auto font-medium leading-relaxed">
-            Try this simulation to see how a custom social media strategy can help attract more clients to Estoril Office Center.
+            Try the simulation below to see which social media strategy can help bring more clients to Estoril Office Center.
             </p>
             <div class="absolute bottom-0 right-0 w-64 h-64 bg-[#E9A68A]/10 rounded-full blur-[80px] -mr-32 -mb-32"></div>
         </header>
