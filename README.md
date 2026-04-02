@@ -104,8 +104,8 @@
                     <div class="bg-[#FDF8F5] p-4 rounded-full mb-6 terracotta-text shadow-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
-                    <h3 class="font-bold text-xl mb-3">Blended Scale</h3>
-                    <p class="text-sm opacity-60 font-medium leading-relaxed mb-6">Omnichannel market dominance for sustainable full occupancy.</p>
+                    <h3 class="font-bold text-xl mb-3">Blended Focus</h3>
+                    <p class="text-sm opacity-60 font-medium leading-relaxed mb-6">Hybrid approach targeting both private office rental and coworking.</p>
                     <span class="select-label text-[10px] font-black uppercase tracking-[0.2em] terracotta-text mt-auto">Select Strategy</span>
                 </div>
             </div>
